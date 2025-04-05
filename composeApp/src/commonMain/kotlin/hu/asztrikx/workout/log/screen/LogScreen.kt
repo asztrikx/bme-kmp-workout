@@ -34,6 +34,7 @@ import androidx.compose.ui.unit.dp
 import hu.asztrikx.workout.log.LogState
 import hu.asztrikx.workout.log.LogViewModel
 import hu.asztrikx.workout.shared.BetterScaffold
+import hu.asztrikx.workout.shared.TopAppBarWithSettings
 import org.koin.compose.koinInject
 
 @OptIn(ExperimentalMaterial3Api::class)
@@ -44,20 +45,7 @@ fun LogScreen() {
 		// Smart cast to 'LogState. Result' is impossible, because 'state' is a property that has open or custom getter
 
 	BetterScaffold(
-		topBar = {
-			TopAppBar(
-				title = {
-					Row(Modifier.fillMaxWidth(), horizontalArrangement = Arrangement.SpaceBetween, verticalAlignment = Alignment.CenterVertically) {
-						Text("Logs")
-						IconButton(
-							onClick = {}
-						) {
-							Icon(Icons.Default.Settings, null)
-						}
-					}
-				},
-			)
-		},
+		topBar = { TopAppBarWithSettings("Log", {}) },
 		floatingActionButton = {
 			Column {
 				FloatingActionButton(
