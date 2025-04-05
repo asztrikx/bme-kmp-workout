@@ -12,6 +12,8 @@ import androidx.compose.material.icons.filled.ArrowDropDown
 import androidx.compose.material.icons.filled.Delete
 import androidx.compose.material.icons.filled.Edit
 import androidx.compose.material3.Card
+import androidx.compose.material3.CardColors
+import androidx.compose.material3.CardDefaults
 import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
 import androidx.compose.material3.MaterialTheme
@@ -22,12 +24,17 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.rotate
 import androidx.compose.ui.unit.dp
 import hu.asztrikx.workout.log.Log
-import hu.asztrikx.workout.log.LogViewModel
-import org.koin.compose.koinInject
 
 @Composable
-fun LogItem(log: Log, isExpanded: Boolean, onExpandedChange: () -> Unit, angle: Float, onDelete: () -> Unit) {
-	Card(Modifier.fillMaxWidth().clickable { onExpandedChange() }) {
+fun LogItem(
+	log: Log,
+	isExpanded: Boolean,
+	onExpandedChange: () -> Unit,
+	angle: Float,
+	onDelete: () -> Unit,
+	colors: CardColors = CardDefaults.cardColors(),
+) {
+	Card(Modifier.fillMaxWidth().clickable { onExpandedChange() }, colors = colors) {
 		Row(
 			modifier = Modifier.padding(20.dp, 10.dp).fillMaxWidth(),
 			horizontalArrangement = Arrangement.SpaceBetween,

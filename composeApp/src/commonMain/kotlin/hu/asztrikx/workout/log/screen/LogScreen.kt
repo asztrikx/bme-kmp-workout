@@ -15,6 +15,7 @@ import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Add
 import androidx.compose.material.icons.filled.Settings
 import androidx.compose.material.icons.filled.Timeline
+import androidx.compose.material3.CardDefaults
 import androidx.compose.material3.CircularProgressIndicator
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.FloatingActionButton
@@ -25,7 +26,6 @@ import androidx.compose.material3.Text
 import androidx.compose.material3.TopAppBar
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.collectAsState
-import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.toMutableStateList
 import androidx.compose.ui.Alignment
@@ -91,7 +91,13 @@ fun LogScreen() {
 							expanded[index],
 							{ expanded[index] = !expanded[index] },
 							angles[index],
-							{ viewModel.delete(log) }
+							{ viewModel.delete(log) },
+							if (index % 2 != 0)
+								CardDefaults.cardColors(
+									containerColor = MaterialTheme.colorScheme.secondaryContainer,
+								)
+							else
+								CardDefaults.cardColors()
 						)
 						LogItemMore(log, expanded[index])
 						Spacer(Modifier.height(20.dp))
