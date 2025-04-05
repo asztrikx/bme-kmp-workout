@@ -12,9 +12,9 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import org.jetbrains.compose.resources.painterResource
 import org.jetbrains.compose.ui.tooling.preview.Preview
-
-import workout.composeapp.generated.resources.Res
-import workout.composeapp.generated.resources.compose_multiplatform
+import org.koin.core.context.startKoin
+import org.koin.dsl.KoinAppDeclaration
+import org.koin.dsl.module
 
 @Composable
 @Preview
@@ -34,4 +34,15 @@ fun App() {
             }
         }
     }
+}
+
+val viewModels = module {
+	single { LogViewModel() }
+}
+
+fun initKoin(config: KoinAppDeclaration? = null) {
+	startKoin {
+		config?.invoke(this)
+		modules(viewModels)
+	}
 }
