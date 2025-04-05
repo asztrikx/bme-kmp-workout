@@ -38,6 +38,12 @@ kotlin {
             implementation(compose.components.uiToolingPreview)
             implementation(libs.androidx.lifecycle.viewmodel)
             implementation(libs.androidx.lifecycle.runtime.compose)
+            // Navigation
+            implementation(libs.androidx.navigation.compose)
+            // Multiplatform androidx.lifecycle.viewmodel
+            implementation(libs.androidx.lifecycle.viewmodel.compose)
+            // Multiplatform androidx.coroutines
+            implementation(libs.kotlinx.coroutines.core)
             // Material Icons
             implementation(libs.androidx.material.icons.extended)
             // Kotlin Extensions DateTime - LocalDate
