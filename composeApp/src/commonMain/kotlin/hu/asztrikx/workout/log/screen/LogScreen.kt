@@ -77,7 +77,7 @@ fun LogScreen(navHostController: NavHostController) {
 							{ viewModel.delete(log) },
 							if (index % 2 != 0)
 								CardDefaults.cardColors(
-									containerColor = MaterialTheme.colorScheme.secondaryContainer,
+									containerColor = MaterialTheme.colorScheme.surfaceContainerHigh,
 								)
 							else
 								CardDefaults.cardColors()
