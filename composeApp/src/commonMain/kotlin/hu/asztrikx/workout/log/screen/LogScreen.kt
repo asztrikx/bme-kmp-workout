@@ -77,9 +77,7 @@ fun LogScreen(navHostController: NavHostController) {
 				}
 			}
 			is LogState.Loading -> {
-				CircularProgressIndicator(
-					color = MaterialTheme.colorScheme.onSecondaryContainer
-				)
+				LoadingScreen()
 			}
 			is LogState.Error -> {
 				Text(state.error.toString())
