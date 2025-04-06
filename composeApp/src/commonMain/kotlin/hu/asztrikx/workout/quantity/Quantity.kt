@@ -4,5 +4,5 @@ import hu.asztrikx.workout.category.Category
 
 data class Quantity(
 	val category: Category,
-	val count: Float,
+	val count: Float?,
 )
