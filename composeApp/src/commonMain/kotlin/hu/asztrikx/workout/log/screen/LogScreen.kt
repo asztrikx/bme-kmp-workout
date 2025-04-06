@@ -27,6 +27,7 @@ import hu.asztrikx.workout.log.LogState
 import hu.asztrikx.workout.log.LogViewModel
 import hu.asztrikx.workout.navigation.Screen
 import hu.asztrikx.workout.shared.BetterScaffold
+import hu.asztrikx.workout.shared.LoadingScreen
 import hu.asztrikx.workout.shared.TopAppBarWithSettings
 import org.koin.compose.koinInject
 
