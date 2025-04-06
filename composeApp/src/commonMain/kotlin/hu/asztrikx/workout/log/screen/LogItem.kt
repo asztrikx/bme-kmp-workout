@@ -33,6 +33,7 @@ import hu.asztrikx.workout.log.Log
 @Composable
 fun LogItem(
 	log: Log,
+	onEdit: () -> Unit,
 	onDelete: () -> Unit,
 	colors: CardColors = CardDefaults.cardColors(),
 ) {
@@ -55,12 +56,12 @@ fun LogItem(
 					}
 				} else {
 					IconButton(
-						onClick = { onDelete() }
+						onClick = onDelete
 					) {
 						Icon(Icons.Default.Delete, null)
 					}
 					IconButton(
-						onClick = {}
+						onClick = onEdit
 					) {
 						Icon(Icons.Default.Edit, null)
 					}
