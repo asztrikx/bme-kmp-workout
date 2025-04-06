@@ -1,9 +1,9 @@
 package hu.asztrikx.workout.log
 
 import hu.asztrikx.workout.quantity.Quantity
-import kotlinx.datetime.LocalDateTime
+import kotlinx.datetime.LocalDate
 
 data class Log(
-	val dateTime: LocalDateTime,
+	val date: LocalDate,
 	val quantities: List<Quantity>,
 )

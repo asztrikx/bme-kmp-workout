@@ -45,7 +45,7 @@ fun LogItem(
 			horizontalArrangement = Arrangement.SpaceBetween,
 			verticalAlignment = Alignment.CenterVertically
 		) {
-			Text(log.dateTime.date.toString(), style = MaterialTheme.typography.titleMedium)
+			Text(log.date.toString(), style = MaterialTheme.typography.titleMedium)
 
 			Row(verticalAlignment = Alignment.CenterVertically) {
 				if (!expanded) {

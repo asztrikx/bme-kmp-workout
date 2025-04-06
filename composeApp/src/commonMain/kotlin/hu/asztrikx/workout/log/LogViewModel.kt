@@ -11,7 +11,7 @@ import kotlinx.coroutines.delay
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.launch
-import kotlinx.datetime.LocalDateTime
+import kotlinx.datetime.LocalDate
 
 class LogViewModel: ViewModel() {
 	private val _state = MutableStateFlow<LogState>(LogState.Loading)
@@ -34,7 +34,7 @@ class LogViewModel: ViewModel() {
 				"db",
 			)
 			val model1 = Log(
-				dateTime = LocalDateTime(2025, 1, 2, 3, 4 ,5, 500),
+				date = LocalDate(2025, 1, 2),
 				quantities = listOf(
 					Quantity(category1, 10f),
 					Quantity(category2, 1.2f),
@@ -42,7 +42,7 @@ class LogViewModel: ViewModel() {
 				)
 			)
 			val model2 = Log(
-				dateTime = LocalDateTime(2025, 1, 2, 3, 4 ,5, 500),
+				date = LocalDate(2025, 1, 2),
 				quantities = listOf(
 					Quantity(category1, 100f),
 				)
