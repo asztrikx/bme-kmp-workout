@@ -2,7 +2,7 @@ package hu.asztrikx.workout.shared
 
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.WindowInsets
-import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material3.FabPosition
 import androidx.compose.material3.MaterialTheme
@@ -38,7 +38,7 @@ fun BetterScaffold(
 		contentColor,
 		contentWindowInsets,
 	) { paddingValues ->
-		Box(Modifier.padding(paddingValues).fillMaxWidth()) {
+		Box(Modifier.padding(paddingValues).fillMaxSize()) {
 			content()
 			Box(
 				Modifier
