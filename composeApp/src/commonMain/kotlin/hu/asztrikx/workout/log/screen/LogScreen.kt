@@ -31,31 +31,33 @@ import androidx.compose.runtime.toMutableStateList
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
+import androidx.navigation.NavHostController
 import hu.asztrikx.workout.log.LogState
 import hu.asztrikx.workout.log.LogViewModel
+import hu.asztrikx.workout.navigation.Screen
 import hu.asztrikx.workout.shared.BetterScaffold
 import hu.asztrikx.workout.shared.TopAppBarWithSettings
 import org.koin.compose.koinInject
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun LogScreen() {
+fun LogScreen(navHostController: NavHostController) {
 	val viewModel: LogViewModel = koinInject()
 	val state = viewModel.state.collectAsState().value
 		// Smart cast to 'LogState. Result' is impossible, because 'state' is a property that has open or custom getter
 
 	BetterScaffold(
-		topBar = { TopAppBarWithSettings("Log", {}) },
+		topBar = { TopAppBarWithSettings("Log", navHostController) },
 		floatingActionButton = {
 			Column {
 				FloatingActionButton(
-					onClick = {}
+					onClick = { navHostController.navigate(Screen.LogAdd.route) }
 				) {
 					Icon(Icons.Default.Add, null)
 				}
 				Spacer(Modifier.height(10.dp))
 				FloatingActionButton(
-					onClick = {}
+					onClick = { navHostController.navigate(Screen.Stats.route)}
 				) {
 					Icon(Icons.Filled.Timeline, null)
 				}
@@ -71,6 +73,7 @@ fun LogScreen() {
 					itemsIndexed(state.logs, /* TODO key*/) { index, log ->
 						LogItem(
 							log,
+							{ navHostController.navigate(Screen.LogEdit.createRoute(log.id)) },
 							{ viewModel.delete(log) },
 							if (index % 2 != 0)
 								CardDefaults.cardColors(

@@ -13,11 +13,12 @@ import androidx.compose.material3.TopAppBar
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import java.awt.SystemColor.text
+import androidx.navigation.NavHostController
+import hu.asztrikx.workout.navigation.Screen
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun TopAppBarWithSettings(text: String, onSettingsClick: () -> Unit) {
+fun TopAppBarWithSettings(text: String, navHostController: NavHostController) {
 	TopAppBar(
 		title = {
 			Row(
@@ -28,7 +29,7 @@ fun TopAppBarWithSettings(text: String, onSettingsClick: () -> Unit) {
 			) {
 				Text(text)
 				IconButton(
-					onClick = onSettingsClick
+					onClick = { navHostController.navigate(Screen.Settings.route) }
 				) {
 					Icon(Icons.Default.Settings, null)
 				}

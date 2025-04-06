@@ -33,7 +33,7 @@ class LogViewModel: ViewModel() {
 				"Lifting",
 				"db",
 			)
-			val model1 = Log(
+			val model1 = Log(1,
 				date = LocalDate(2025, 1, 2),
 				quantities = listOf(
 					Quantity(category1, 10f),
@@ -41,7 +41,7 @@ class LogViewModel: ViewModel() {
 					Quantity(category2, 1.2f),
 				)
 			)
-			val model2 = Log(
+			val model2 = Log(2,
 				date = LocalDate(2025, 1, 2),
 				quantities = listOf(
 					Quantity(category1, 100f),
@@ -67,7 +67,7 @@ class LogViewModel: ViewModel() {
 					_state.value = LogState.Loading
 					delay(0)
 					_state.value = LogState.Result(stateValue.logs.filter {
-						it != log
+						it.id != log.id
 					})
 				} catch (e: Exception) {
 					_state.value = LogState.Error(e)
