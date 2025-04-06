@@ -16,7 +16,7 @@ import org.koin.dsl.module
 @Composable
 @Preview
 fun App() {
-	var navHostController = rememberNavController()
+	val navHostController = rememberNavController()
 
 	MaterialTheme {
 		NavGraph(navHostController)
