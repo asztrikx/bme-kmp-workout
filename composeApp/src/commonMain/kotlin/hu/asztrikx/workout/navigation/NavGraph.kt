@@ -6,6 +6,7 @@ import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import hu.asztrikx.workout.logEdit.screen.LogEditScreen
 import hu.asztrikx.workout.log.screen.LogScreen
+import hu.asztrikx.workout.settings.screen.SettingsScreen
 
 @Composable
 fun NavGraph(navHostController: NavHostController) {
@@ -24,7 +25,7 @@ fun NavGraph(navHostController: NavHostController) {
 
 		}
 		composable(Screen.Settings.route) {
-
+			SettingsScreen(navHostController)
 		}
 	}
 }

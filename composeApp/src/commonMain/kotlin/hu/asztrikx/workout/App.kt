@@ -6,6 +6,7 @@ import androidx.navigation.compose.rememberNavController
 import hu.asztrikx.workout.log.LogViewModel
 import hu.asztrikx.workout.logEdit.LogEditViewModel
 import hu.asztrikx.workout.navigation.NavGraph
+import hu.asztrikx.workout.settings.SettingsViewModel
 import org.jetbrains.compose.ui.tooling.preview.Preview
 import org.koin.core.context.startKoin
 import org.koin.dsl.KoinAppDeclaration
@@ -24,6 +25,7 @@ fun App() {
 val viewModels = module {
 	single { LogViewModel() }
 	single { LogEditViewModel() }
+	single { SettingsViewModel() }
 }
 
 fun initKoin(config: KoinAppDeclaration? = null) {
