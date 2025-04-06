@@ -23,7 +23,7 @@ fun NavGraph(navHostController: NavHostController) {
 			LogEditScreen(navHostController, "Edit", id.toInt())
 		}
 		composable(Screen.Stats.route) {
-
+			StatsScreen(navHostController)
 		}
 		composable(Screen.Settings.route) {
 			SettingsScreen(navHostController)
