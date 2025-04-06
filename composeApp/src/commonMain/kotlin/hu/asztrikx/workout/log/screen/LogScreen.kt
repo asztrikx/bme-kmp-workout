@@ -64,11 +64,6 @@ fun LogScreen() {
 	) {
 		when (state) {
 			is LogState.Result -> {
-				val expanded = remember { state.logs.map { false }.toMutableStateList() }
-				val angles = expanded.map { isExpanded ->
-					animateFloatAsState(if (isExpanded) 0f else -90f).value // TODO why does this work?
-				}
-
 				LazyColumn(
 					modifier = Modifier.fillMaxSize().padding(20.dp),
 					horizontalAlignment = Alignment.CenterHorizontally,
@@ -76,9 +71,6 @@ fun LogScreen() {
 					itemsIndexed(state.logs, /* TODO key*/) { index, log ->
 						LogItem(
 							log,
-							expanded[index],
-							{ expanded[index] = !expanded[index] },
-							angles[index],
 							{ viewModel.delete(log) },
 							if (index % 2 != 0)
 								CardDefaults.cardColors(
@@ -87,7 +79,6 @@ fun LogScreen() {
 							else
 								CardDefaults.cardColors()
 						)
-						LogItemMore(log, expanded[index])
 						Spacer(Modifier.height(20.dp))
 					}
 				}

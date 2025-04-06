@@ -1,5 +1,6 @@
 package hu.asztrikx.workout.log.screen
 
+import androidx.compose.animation.core.animateFloatAsState
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Row
@@ -19,6 +20,10 @@ import androidx.compose.material3.IconButton
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
+import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.rotate
@@ -28,13 +33,13 @@ import hu.asztrikx.workout.log.Log
 @Composable
 fun LogItem(
 	log: Log,
-	isExpanded: Boolean,
-	onExpandedChange: () -> Unit,
-	angle: Float,
 	onDelete: () -> Unit,
 	colors: CardColors = CardDefaults.cardColors(),
 ) {
-	Card(Modifier.fillMaxWidth().clickable { onExpandedChange() }, colors = colors) {
+	var expanded by remember { mutableStateOf(false) }
+	val angle by animateFloatAsState(if (expanded) 0f else -90f)
+
+	Card(Modifier.fillMaxWidth().clickable { expanded = !expanded }, colors = colors) {
 		Row(
 			modifier = Modifier.padding(20.dp, 10.dp).fillMaxWidth(),
 			horizontalArrangement = Arrangement.SpaceBetween,
@@ -43,7 +48,7 @@ fun LogItem(
 			Text(log.dateTime.date.toString(), style = MaterialTheme.typography.titleMedium)
 
 			Row(verticalAlignment = Alignment.CenterVertically) {
-				if (!isExpanded) {
+				if (!expanded) {
 					log.quantities.forEach {
 						Icon(it.category.icon, null)
 						Spacer(Modifier.width(10.dp))
@@ -62,7 +67,7 @@ fun LogItem(
 				}
 
 				IconButton(
-					onClick = { onExpandedChange() },
+					onClick = { expanded = !expanded },
 					Modifier.rotate(degrees = angle),
 				) {
 					Icon(Icons.Default.ArrowDropDown, null)
@@ -70,4 +75,6 @@ fun LogItem(
 			}
 		}
 	}
+
+	LogItemMore(log, expanded)
 }
