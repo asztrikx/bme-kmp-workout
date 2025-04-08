@@ -20,14 +20,14 @@ import hu.asztrikx.workout.quantity.Quantity
 fun LogEditQuantityItem(
 	quantity: Quantity,
 	quantityCount: Int?,
-	onQuantityChane: (Int?) -> Unit
+	onQuantityChange: (Int?) -> Unit
 ) {
 	Row(Modifier.padding(10.dp), verticalAlignment = Alignment.CenterVertically) {
 		Icon(quantity.category.icon, null)
 		Spacer(Modifier.width(20.dp))
 		OutlinedTextField(
 			quantityCount?.toString() ?: "",
-			{ onQuantityChane(it.toIntOrNull()) },
+			{ onQuantityChange(it.toIntOrNull()) },
 			label = {
 				if (quantityCount == null) {
 					Text("""Quantity of unit "${quantity.category.unit}" """)
