@@ -36,7 +36,6 @@ fun LogEditQuantityItem(
 				}
 			},
 			keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Number),
-			modifier = Modifier.minimumInteractiveComponentSize(),
 		)
 	}
 }
