@@ -63,7 +63,7 @@ fun CustomDatePicker(
 	var dismiss by remember { mutableStateOf(true) }
 
 	OutlinedTextField(
-		value = date?.format() ?: "",
+		value = date?.format().orEmpty(),
 		onValueChange = {},
 		label = label,
 		trailingIcon = {
