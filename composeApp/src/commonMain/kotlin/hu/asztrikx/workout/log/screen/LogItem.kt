@@ -1,6 +1,13 @@
 package hu.asztrikx.workout.log.screen
 
+import androidx.compose.animation.AnimatedVisibility
 import androidx.compose.animation.core.animateFloatAsState
+import androidx.compose.animation.expandHorizontally
+import androidx.compose.animation.fadeIn
+import androidx.compose.animation.fadeOut
+import androidx.compose.animation.shrinkHorizontally
+import androidx.compose.animation.slideInHorizontally
+import androidx.compose.animation.slideOutHorizontally
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Row
@@ -49,21 +56,30 @@ fun LogItem(
 			Text(log.date.toString(), style = MaterialTheme.typography.titleMedium)
 
 			Row(verticalAlignment = Alignment.CenterVertically) {
-				if (!expanded) {
-					log.quantities.forEach {
-						Icon(it.category.icon, null)
-						Spacer(Modifier.width(10.dp))
+				AnimatedVisibility(
+					!expanded,
+					enter = slideInHorizontally(initialOffsetX = { 2*it }) + expandHorizontally() + fadeIn(),
+					exit = slideOutHorizontally(targetOffsetX = { 2*it }) + shrinkHorizontally() + fadeOut()
+				) {
+					Row(verticalAlignment = Alignment.CenterVertically) {
+						log.quantities.forEach {
+							Icon(it.category.icon, null)
+							Spacer(Modifier.width(10.dp))
+						}
 					}
-				} else {
-					IconButton(
-						onClick = onDelete
-					) {
-						Icon(Icons.Default.Delete, null)
-					}
-					IconButton(
-						onClick = onEdit
-					) {
-						Icon(Icons.Default.Edit, null)
+				}
+				AnimatedVisibility(
+					expanded,
+					enter = slideInHorizontally(initialOffsetX = { 2*it }) + expandHorizontally() + fadeIn(),
+					exit = slideOutHorizontally(targetOffsetX = { 2*it }) + shrinkHorizontally() + fadeOut()
+				) {
+					Row(verticalAlignment = Alignment.CenterVertically) {
+						IconButton(onDelete) {
+							Icon(Icons.Default.Delete, null)
+						}
+						IconButton(onEdit) {
+							Icon(Icons.Default.Edit, null)
+						}
 					}
 				}
 
