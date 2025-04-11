@@ -22,6 +22,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 import hu.asztrikx.workout.log.Log
 
+@OptIn(ExperimentalLayoutApi::class)
 @Composable
 fun LogItemMore(log: Log, isExpanded: Boolean) {
 	AnimatedVisibility(
@@ -33,17 +34,16 @@ fun LogItemMore(log: Log, isExpanded: Boolean) {
 			Modifier.fillMaxWidth().padding(40.dp, 5.dp),
 			shape = RoundedCornerShape(0.dp, 0.dp, 8.dp, 8.dp)
 		) {
-			log.quantities.chunked(2).forEach { chunk ->
-				Row(
-					Modifier.fillMaxWidth().padding(10.dp),
-					horizontalArrangement = Arrangement.SpaceAround
-				) {
-					chunk.forEach { quantity ->
-						Row {
-							Icon(quantity.category.icon, null)
-							Spacer(Modifier.width(10.dp))
-							Text("%.2f %s".format(quantity.count, quantity.category.unit))
-						}
+			FlowRow(
+				Modifier.fillMaxWidth(),
+				maxItemsInEachRow = 2,
+				horizontalArrangement = Arrangement.SpaceAround,
+			) {
+				log.quantities.forEach { quantity ->
+					Row(Modifier.padding(10.dp)) {
+						Icon(quantity.category.icon, null)
+						Spacer(Modifier.width(10.dp))
+						Text("%.2f %s".format(quantity.count, quantity.category.unit))
 					}
 				}
 			}
