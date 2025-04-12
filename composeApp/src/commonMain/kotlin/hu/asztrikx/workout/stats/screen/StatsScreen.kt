@@ -72,7 +72,7 @@ fun StatsScreen(
 					)
 
 					LazyColumn(Modifier.fillMaxSize()) {
-						items(state.categories.zip(state.quantityWithDates())) { (category, quantityWithDates) ->
+						items(state.categories.zip(state.quantityWithDates()), key = { it.first.id }) { (category, quantityWithDates) ->
 							Spacer(Modifier.height(40.dp))
 							StatsItem(category, quantityWithDates)
 						}

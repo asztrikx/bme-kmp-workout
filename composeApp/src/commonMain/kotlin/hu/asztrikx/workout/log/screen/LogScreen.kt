@@ -66,7 +66,7 @@ fun LogScreen(
 					modifier = Modifier.fillMaxSize().padding(20.dp),
 					horizontalAlignment = Alignment.CenterHorizontally,
 				) {
-					itemsIndexed(state.logs, /* TODO key*/) { index, log ->
+					itemsIndexed(state.logs, key = { _, it -> it.id }) { index, log ->
 						LogItem(
 							log,
 							{ onEditClick(log.id) },

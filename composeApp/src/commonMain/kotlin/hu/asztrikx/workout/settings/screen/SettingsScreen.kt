@@ -107,7 +107,7 @@ fun SettingsScreen(
 						modifier = Modifier.fillMaxWidth().padding(20.dp, 0.dp),
 						horizontalAlignment = Alignment.CenterHorizontally,
 					) {
-						items(state.settings.categories, /* TODO key*/) { category ->
+						items(state.settings.categories, key = { it.id }) { category ->
 							Row(Modifier.fillMaxWidth(), horizontalArrangement = Arrangement.SpaceBetween) {
 								Icon(category.icon, null)
 								Text(category.name)
