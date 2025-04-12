@@ -12,11 +12,12 @@ import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Add
 import androidx.compose.material.icons.filled.Timeline
 import androidx.compose.material3.CardDefaults
-import androidx.compose.material3.CircularProgressIndicator
+import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.FloatingActionButton
 import androidx.compose.material3.Icon
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
+import androidx.compose.material3.TopAppBar
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.collectAsState
 import androidx.compose.ui.Alignment
@@ -28,9 +29,10 @@ import hu.asztrikx.workout.log.LogViewModel
 import hu.asztrikx.workout.navigation.Screen
 import hu.asztrikx.workout.shared.BetterScaffold
 import hu.asztrikx.workout.shared.LoadingScreen
-import hu.asztrikx.workout.shared.TopAppBarWithSettings
+import hu.asztrikx.workout.shared.SettingsIconButton
 import org.koin.compose.koinInject
 
+@OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun LogScreen(navHostController: NavHostController) {
 	val viewModel: LogViewModel = koinInject()
@@ -38,7 +40,12 @@ fun LogScreen(navHostController: NavHostController) {
 		// Smart cast to 'LogState. Result' is impossible, because 'state' is a property that has open or custom getter
 
 	BetterScaffold(
-		topBar = { TopAppBarWithSettings("Log", navHostController) },
+		topBar = {
+			TopAppBar(
+				title = { Text("Log") },
+				actions = { SettingsIconButton(navHostController) },
+			)
+		},
 		floatingActionButton = {
 			Column {
 				FloatingActionButton(

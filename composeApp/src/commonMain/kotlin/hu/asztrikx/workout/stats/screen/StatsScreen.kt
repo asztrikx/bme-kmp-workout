@@ -11,9 +11,11 @@ import androidx.compose.material.icons.filled.History
 import androidx.compose.material.icons.filled.Schedule
 import androidx.compose.material.icons.filled.Schema
 import androidx.compose.material.icons.filled.Timeline
+import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.FloatingActionButton
 import androidx.compose.material3.Icon
 import androidx.compose.material3.Text
+import androidx.compose.material3.TopAppBar
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
@@ -28,19 +30,25 @@ import hu.asztrikx.workout.navigation.Screen
 import hu.asztrikx.workout.shared.BetterScaffold
 import hu.asztrikx.workout.shared.CustomDatePicker
 import hu.asztrikx.workout.shared.LoadingScreen
-import hu.asztrikx.workout.shared.TopAppBarWithSettings
+import hu.asztrikx.workout.shared.SettingsIconButton
 import hu.asztrikx.workout.stats.StatsState
 import hu.asztrikx.workout.stats.StatsViewModel
 import kotlinx.datetime.LocalDate
 import org.koin.compose.koinInject
 
+@OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun StatsScreen(navHostController: NavHostController) {
 	val viewModel: StatsViewModel = koinInject()
 	val state by viewModel.state.collectAsState()
 
 	BetterScaffold(
-		topBar = { TopAppBarWithSettings("Stats", navHostController) },
+		topBar = {
+			TopAppBar(
+				title = { Text("Stats") },
+				actions = { SettingsIconButton(navHostController) },
+			)
+		 },
 		floatingActionButton = {
 			Column {
 				FloatingActionButton(
