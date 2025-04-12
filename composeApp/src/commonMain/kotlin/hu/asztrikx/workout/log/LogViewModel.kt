@@ -10,6 +10,7 @@ import hu.asztrikx.workout.quantity.Quantity
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.asStateFlow
+import kotlinx.coroutines.flow.update
 import kotlinx.coroutines.launch
 import kotlinx.datetime.LocalDate
 
@@ -51,13 +52,13 @@ class LogViewModel: ViewModel() {
 			)
 
 			try {
-				_state.value = LogState.Loading
+				_state.update { LogState.Loading }
 				delay(0)
-				_state.value = LogState.Result(List(15) {
+				_state.update { LogState.Result(List(15) {
 					if (it % 2 == 0) model1 else model2
-				})
+				}) }
 			} catch (e: Exception) {
-				_state.value = LogState.Error(e)
+				_state.update { LogState.Error(e) }
 			}
 		}
 	}
@@ -66,13 +67,13 @@ class LogViewModel: ViewModel() {
 		(_state.value as LogState.Result).let { stateValue ->
 			viewModelScope.launch {
 				try {
-					_state.value = LogState.Loading
+					_state.update { LogState.Loading }
 					delay(0)
-					_state.value = LogState.Result(stateValue.logs.filter {
+					_state.update { LogState.Result(stateValue.logs.filter {
 						it.id != log.id
-					})
+					}) }
 				} catch (e: Exception) {
-					_state.value = LogState.Error(e)
+					_state.update { LogState.Error(e) }
 				}
 			}
 		}

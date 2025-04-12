@@ -25,7 +25,7 @@ class LogEditViewModel: ViewModel() {
 	val uiEvent = _uiEvent.receiveAsFlow()
 
 	fun new() {
-		_state.value = Log(-1, currentDate(), listOf())
+		_state.update { Log(-1, currentDate(), listOf()) }
 	}
 
 	fun edit(id: Int) {
@@ -42,7 +42,7 @@ class LogEditViewModel: ViewModel() {
 			"db",
 		)
 
-		_state.value = Log(
+		_state.update { Log(
 			1,
 			LocalDate(2021,1,2),
 			listOf(
@@ -50,7 +50,7 @@ class LogEditViewModel: ViewModel() {
 				Quantity(2, category2, 1.2f),
 				Quantity(3, category2, 1.2f),
 			)
-		)
+		) }
 	}
 
 	fun onEvent(event: LogEditEvent) {
