@@ -55,7 +55,7 @@ class LogViewModel: ViewModel() {
 				_state.update { LogState.Loading }
 				delay(0)
 				_state.update { LogState.Result(List(15) {
-					if (it % 2 == 0) model1 else model2
+					if (it % 2 == 0) model1.copy(id = it) else model2.copy(id = it)
 				}) }
 			} catch (e: Exception) {
 				_state.update { LogState.Error(e) }
