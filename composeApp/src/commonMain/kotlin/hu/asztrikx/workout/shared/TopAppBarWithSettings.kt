@@ -20,20 +20,13 @@ import hu.asztrikx.workout.navigation.Screen
 @Composable
 fun TopAppBarWithSettings(text: String, navHostController: NavHostController) {
 	TopAppBar(
-		title = {
-			Row(
-				Modifier.fillMaxWidth(),
-				horizontalArrangement = Arrangement.SpaceBetween,
-				verticalAlignment = Alignment.CenterVertically,
-					// IconButton too large
+		title = { Text(text) },
+		actions = {
+			IconButton(
+				onClick = { navHostController.navigate(Screen.Settings.route) }
 			) {
-				Text(text)
-				IconButton(
-					onClick = { navHostController.navigate(Screen.Settings.route) }
-				) {
-					Icon(Icons.Default.Settings, null)
-				}
+				Icon(Icons.Default.Settings, null)
 			}
-		},
+		}
 	)
 }
