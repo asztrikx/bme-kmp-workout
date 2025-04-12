@@ -22,11 +22,13 @@ class SettingsViewModel: ViewModel() {
 
 	fun load() {
 		val category1 = Category(
+			1,
 			Icons.AutoMirrored.Filled.DirectionsRun,
 			"Running",
 			"km",
 		)
 		val category2 = Category(
+			2,
 			Icons.Default.FitnessCenter,
 			"Lifting",
 			"db",

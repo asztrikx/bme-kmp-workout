@@ -8,7 +8,6 @@ import androidx.compose.foundation.text.KeyboardOptions
 import androidx.compose.material3.Icon
 import androidx.compose.material3.OutlinedTextField
 import androidx.compose.material3.Text
-import androidx.compose.material3.minimumInteractiveComponentSize
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
@@ -19,17 +18,16 @@ import hu.asztrikx.workout.quantity.Quantity
 @Composable
 fun LogEditQuantityItem(
 	quantity: Quantity,
-	quantityCount: Int?,
-	onQuantityChange: (Int?) -> Unit
+	onCountChange: (Float?) -> Unit,
 ) {
 	Row(Modifier.padding(10.dp), verticalAlignment = Alignment.CenterVertically) {
 		Icon(quantity.category.icon, null)
 		Spacer(Modifier.width(20.dp))
 		OutlinedTextField(
-			quantityCount?.toString() ?: "",
-			{ onQuantityChange(it.toIntOrNull()) },
+			quantity.count?.toString() ?: "",
+			{ onCountChange(it.toFloatOrNull()) },
 			label = {
-				if (quantityCount == null) {
+				if (quantity.count == null) {
 					Text("""Quantity of unit "${quantity.category.unit}" """)
 				} else {
 					Text(quantity.category.unit)

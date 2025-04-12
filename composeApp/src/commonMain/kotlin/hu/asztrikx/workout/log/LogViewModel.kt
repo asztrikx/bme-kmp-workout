@@ -24,11 +24,13 @@ class LogViewModel: ViewModel() {
 	private fun loadLogs() {
 		viewModelScope.launch {
 			val category1 = Category(
+				1,
 				Icons.AutoMirrored.Filled.DirectionsRun,
 				"Running",
 				"km",
 			)
 			val category2 = Category(
+				2,
 				Icons.Default.FitnessCenter,
 				"Lifting",
 				"db",
@@ -36,15 +38,15 @@ class LogViewModel: ViewModel() {
 			val model1 = Log(1,
 				date = LocalDate(2025, 1, 2),
 				quantities = listOf(
-					Quantity(category1, 10f),
-					Quantity(category2, 1.2f),
-					Quantity(category2, 1.2f),
+					Quantity(1, category1, 10f),
+					Quantity(2, category2, 1.2f),
+					Quantity(3, category2, 1.2f),
 				)
 			)
 			val model2 = Log(2,
 				date = LocalDate(2025, 1, 2),
 				quantities = listOf(
-					Quantity(category1, 100f),
+					Quantity(4, category1, 100f),
 				)
 			)
 
