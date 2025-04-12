@@ -31,6 +31,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 import hu.asztrikx.workout.settings.SettingsState
 import hu.asztrikx.workout.settings.SettingsViewModel
+import hu.asztrikx.workout.settings.categoryEdit.CategoryEditDialog
 import hu.asztrikx.workout.shared.BetterScaffold
 import hu.asztrikx.workout.shared.CustomDatePicker
 import hu.asztrikx.workout.shared.LoadingScreen
@@ -94,13 +95,18 @@ fun SettingsScreen(
 					Text("Categories of workout", style = MaterialTheme.typography.labelMedium)
 
 					var categoryAddShow by remember { mutableStateOf(false) }
-					Row(Modifier.fillMaxWidth().padding(10.dp), horizontalArrangement = Arrangement.Center) {
+					Row(Modifier.fillMaxWidth().padding(0.dp, 20.dp), horizontalArrangement = Arrangement.Center) {
 						Button({ categoryAddShow = true }) {
 							Text("Create new")
 						}
 					}
 					if (categoryAddShow) {
-						CategoryAddDialog({ categoryAddShow = !categoryAddShow }, { })
+						CategoryEditDialog(
+							"Add category",
+							{ categoryAddShow = !categoryAddShow },
+							{ categoryAddShow = !categoryAddShow },
+							null,
+						)
 					}
 
 					LazyColumn(
@@ -108,12 +114,7 @@ fun SettingsScreen(
 						horizontalAlignment = Alignment.CenterHorizontally,
 					) {
 						items(state.settings.categories, key = { it.id }) { category ->
-							Row(Modifier.fillMaxWidth(), horizontalArrangement = Arrangement.SpaceBetween) {
-								Icon(category.icon, null)
-								Text(category.name)
-								Text(category.unit)
-							}
-							Spacer(Modifier.height(20.dp))
+							SettingsScreenItem(category)
 						}
 					}
 

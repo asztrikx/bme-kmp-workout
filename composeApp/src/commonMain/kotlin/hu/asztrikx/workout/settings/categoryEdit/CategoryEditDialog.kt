@@ -1,4 +1,4 @@
-package hu.asztrikx.workout.settings.screen
+package hu.asztrikx.workout.settings.categoryEdit
 
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
@@ -20,42 +20,61 @@ import androidx.compose.material3.OutlinedTextField
 import androidx.compose.material3.Text
 import androidx.compose.material3.TextButton
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.LaunchedEffect
+import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
-import androidx.compose.runtime.mutableStateOf
-import androidx.compose.runtime.remember
-import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.unit.dp
+import org.koin.compose.koinInject
 
 @OptIn(ExperimentalLayoutApi::class)
 @Composable
-fun CategoryAddDialog(
+fun CategoryEditDialog(
+	title: String,
 	onDismiss: () -> Unit,
-	onAdd: () -> Unit
+	onAdd: () -> Unit,
+	id: Int?,
 ) {
-	var newCategoryName by remember { mutableStateOf("") }
-	var newCategoryUnit by remember { mutableStateOf("") }
-	var newCategoryIcon by remember { mutableStateOf(Icons.Default.FitnessCenter) }
+	val viewModel: CategoryEditViewModel = koinInject()
+	val state by viewModel.state.collectAsState()
+
+	LaunchedEffect(Unit) {
+		if (id != null) {
+			viewModel.edit(id)
+		} else {
+			viewModel.new()
+		}
+	}
+
+	LaunchedEffect(Unit) {
+		viewModel.uiEvent.collect { uiEvent ->
+			when (uiEvent) {
+				is CategoryEditUIEvent.Success -> {
+					onAdd()
+				}
+			}
+		}
+	}
 
 	AlertDialog(
 		title = {
-			Text("Add category")
+			Text(title)
 		},
 		text = {
 			Column {
 				Text("Name", style = MaterialTheme.typography.labelMedium)
 				OutlinedTextField(
-					newCategoryName,
-					{ newCategoryName = it },
+					state.name,
+					{ viewModel.onEvent(CategoryEditEvent.Name(it)) },
 				)
 
 				Spacer(Modifier.height(20.dp))
 
 				Text("Unit", style = MaterialTheme.typography.labelMedium)
 				OutlinedTextField(
-					newCategoryUnit,
-					{ newCategoryUnit = it },
+					state.unit,
+					{ viewModel.onEvent(CategoryEditEvent.Unit(it)) },
 				)
 
 				Spacer(Modifier.height(20.dp))
@@ -66,8 +85,11 @@ fun CategoryAddDialog(
 					List(15) {
 						if (it % 2 == 0) Icons.Default.FitnessCenter else Icons.AutoMirrored.Filled.DirectionsRun
 					}.forEach { icon ->
-						val backgroundColor = if (newCategoryIcon == icon) Color.Blue.copy(alpha = 0.2f) else Color.Transparent
-						IconButton({ newCategoryIcon = icon }, modifier = Modifier.background(color = backgroundColor, shape = CircleShape)) {
+						val backgroundColor = if (state.icon == icon) Color.Blue.copy(alpha = 0.2f) else Color.Transparent
+						IconButton(
+							{ viewModel.onEvent(CategoryEditEvent.Icon(icon)) },
+							modifier = Modifier.background(color = backgroundColor, shape = CircleShape)
+						) {
 							Icon(icon, null)
 						}
 					}
