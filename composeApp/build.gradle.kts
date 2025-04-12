@@ -52,6 +52,8 @@ kotlin {
             api(libs.koin.core)
             implementation(libs.koin.compose)
             implementation(libs.koin.compose.viewmodel)
+            // Chart
+            implementation(libs.charts)
         }
         desktopMain.dependencies {
             implementation(compose.desktop.currentOs)
