@@ -83,7 +83,9 @@ fun CustomDatePicker(
 			onDismissRequest = onDismiss,
 			confirmButton = {
 				TextButton(onClick = {
-					onDateSelected(convertMillisToDate(datePickerState.selectedDateMillis!!))
+					datePickerState.selectedDateMillis?.let {
+						onDateSelected(convertMillisToDate(it))
+					}
 					onDismiss()
 				}) {
 					Text("OK")
