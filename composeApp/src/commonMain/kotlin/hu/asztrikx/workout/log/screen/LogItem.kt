@@ -36,6 +36,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.rotate
 import androidx.compose.ui.unit.dp
 import hu.asztrikx.workout.log.Log
+import hu.asztrikx.workout.shared.format
 
 @Composable
 fun LogItem(
@@ -53,7 +54,7 @@ fun LogItem(
 			horizontalArrangement = Arrangement.SpaceBetween,
 			verticalAlignment = Alignment.CenterVertically
 		) {
-			Text(log.date.toString(), style = MaterialTheme.typography.titleMedium)
+			Text(log.date.format(), style = MaterialTheme.typography.titleMedium)
 
 			Row(verticalAlignment = Alignment.CenterVertically) {
 				AnimatedVisibility(

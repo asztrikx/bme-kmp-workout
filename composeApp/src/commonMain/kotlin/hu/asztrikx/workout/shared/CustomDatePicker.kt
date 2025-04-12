@@ -43,9 +43,9 @@ fun currentDate(): LocalDate {
 fun LocalDate.format(): String {
 	val format = LocalDate.Format {
 		year()
-		char('-')
+		char('.')
 		monthNumber()
-		char('-')
+		char('.')
 		dayOfMonth()
 	}
 
