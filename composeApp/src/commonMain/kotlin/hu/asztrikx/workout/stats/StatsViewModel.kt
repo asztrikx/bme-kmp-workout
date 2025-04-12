@@ -47,7 +47,7 @@ class StatsViewModel: ViewModel() {
 						quantityWithDates,
 						listOf(
 							Category(1, Icons.Default.AssistWalker, "Running", "km"),
-							Category(1, Icons.Default.AssistWalker, "Running", "km"),
+							Category(2, Icons.Default.AssistWalker, "Running", "km"),
 						),
 						startDate,
 					)
