@@ -9,7 +9,7 @@ import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.lazy.LazyColumn
-import androidx.compose.foundation.lazy.itemsIndexed
+import androidx.compose.foundation.lazy.items
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.automirrored.filled.ArrowBack
 import androidx.compose.material3.Button
@@ -107,7 +107,7 @@ fun SettingsScreen(
 						modifier = Modifier.fillMaxWidth().padding(20.dp, 0.dp),
 						horizontalAlignment = Alignment.CenterHorizontally,
 					) {
-						itemsIndexed(state.settings.categories, /* TODO key*/) { index, category ->
+						items(state.settings.categories, /* TODO key*/) { category ->
 							Row(Modifier.fillMaxWidth(), horizontalArrangement = Arrangement.SpaceBetween) {
 								Icon(category.icon, null)
 								Text(category.name)
