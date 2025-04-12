@@ -7,6 +7,7 @@ import hu.asztrikx.workout.log.LogViewModel
 import hu.asztrikx.workout.logEdit.LogEditViewModel
 import hu.asztrikx.workout.navigation.NavGraph
 import hu.asztrikx.workout.settings.SettingsViewModel
+import hu.asztrikx.workout.settings.categoryEdit.CategoryEditViewModel
 import hu.asztrikx.workout.stats.StatsViewModel
 import org.jetbrains.compose.ui.tooling.preview.Preview
 import org.koin.core.context.startKoin
@@ -28,6 +29,7 @@ val viewModels = module {
 	single { LogEditViewModel() }
 	single { SettingsViewModel() }
 	single { StatsViewModel() }
+	single { CategoryEditViewModel() }
 }
 
 fun initKoin(config: KoinAppDeclaration? = null) {
