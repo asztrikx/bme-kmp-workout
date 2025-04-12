@@ -1,6 +1,5 @@
 package hu.asztrikx.workout.log.screen
 
-import androidx.compose.animation.core.animateFloatAsState
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
@@ -23,10 +22,8 @@ import androidx.compose.runtime.collectAsState
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
-import androidx.navigation.NavHostController
 import hu.asztrikx.workout.log.LogState
 import hu.asztrikx.workout.log.LogViewModel
-import hu.asztrikx.workout.navigation.Screen
 import hu.asztrikx.workout.shared.BetterScaffold
 import hu.asztrikx.workout.shared.LoadingScreen
 import hu.asztrikx.workout.shared.SettingsIconButton
@@ -34,7 +31,12 @@ import org.koin.compose.koinInject
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun LogScreen(navHostController: NavHostController) {
+fun LogScreen(
+	onAddClick: () -> Unit,
+	onStatsClick: () -> Unit,
+	onSettingsClick: () -> Unit,
+	onEditClick: (Int) -> Unit,
+) {
 	val viewModel: LogViewModel = koinInject()
 	val state = viewModel.state.collectAsState().value
 		// Smart cast to 'LogState. Result' is impossible, because 'state' is a property that has open or custom getter
@@ -43,20 +45,16 @@ fun LogScreen(navHostController: NavHostController) {
 		topBar = {
 			TopAppBar(
 				title = { Text("Log") },
-				actions = { SettingsIconButton(navHostController) },
+				actions = { SettingsIconButton(onSettingsClick) },
 			)
 		},
 		floatingActionButton = {
 			Column {
-				FloatingActionButton(
-					onClick = { navHostController.navigate(Screen.LogAdd.route) }
-				) {
+				FloatingActionButton(onAddClick) {
 					Icon(Icons.Default.Add, null)
 				}
 				Spacer(Modifier.height(10.dp))
-				FloatingActionButton(
-					onClick = { navHostController.navigate(Screen.Stats.route)}
-				) {
+				FloatingActionButton(onStatsClick) {
 					Icon(Icons.Filled.Timeline, null)
 				}
 			}
@@ -71,7 +69,7 @@ fun LogScreen(navHostController: NavHostController) {
 					itemsIndexed(state.logs, /* TODO key*/) { index, log ->
 						LogItem(
 							log,
-							{ navHostController.navigate(Screen.LogEdit.createRoute(log.id)) },
+							{ onEditClick(log.id) },
 							{ viewModel.delete(log) },
 							if (index % 2 != 0)
 								CardDefaults.cardColors(

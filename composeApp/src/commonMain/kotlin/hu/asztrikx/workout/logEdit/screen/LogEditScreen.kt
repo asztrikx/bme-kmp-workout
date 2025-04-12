@@ -24,7 +24,6 @@ import androidx.compose.runtime.getValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
-import androidx.navigation.NavHostController
 import hu.asztrikx.workout.logEdit.LogEditEvent
 import hu.asztrikx.workout.logEdit.LogEditUIEvent
 import hu.asztrikx.workout.logEdit.LogEditViewModel
@@ -34,7 +33,11 @@ import org.koin.compose.koinInject
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun LogEditScreen(navHostController: NavHostController, text: String, id: Int?) {
+fun LogEditScreen(
+	text: String,
+	id: Int?,
+	onBackClick: () -> Unit,
+) {
 	val viewModel: LogEditViewModel = koinInject()
 	val log by viewModel.state.collectAsState()
 
@@ -50,7 +53,7 @@ fun LogEditScreen(navHostController: NavHostController, text: String, id: Int?) 
 		viewModel.uiEvent.collect { uiEvent ->
 			when (uiEvent) {
 				is LogEditUIEvent.Success -> {
-					navHostController.popBackStack()
+					onBackClick()
 				}
 			}
 		}
@@ -61,7 +64,7 @@ fun LogEditScreen(navHostController: NavHostController, text: String, id: Int?) 
 			TopAppBar(
 				title = { Text(text) },
 				navigationIcon = {
-					IconButton(onClick = { navHostController.popBackStack() }) {
+					IconButton(onBackClick) {
 						Icon(Icons.AutoMirrored.Filled.ArrowBack, null)
 					}
 				}

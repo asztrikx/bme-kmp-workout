@@ -38,7 +38,11 @@ import org.koin.compose.koinInject
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun StatsScreen(navHostController: NavHostController) {
+fun StatsScreen(
+	onAddClick: () -> Unit,
+	onLogsClick: () -> Unit,
+	onSettingsClick: () -> Unit,
+) {
 	val viewModel: StatsViewModel = koinInject()
 	val state by viewModel.state.collectAsState()
 
@@ -46,20 +50,16 @@ fun StatsScreen(navHostController: NavHostController) {
 		topBar = {
 			TopAppBar(
 				title = { Text("Stats") },
-				actions = { SettingsIconButton(navHostController) },
+				actions = { SettingsIconButton(onSettingsClick) },
 			)
 		 },
 		floatingActionButton = {
 			Column {
-				FloatingActionButton(
-					onClick = { navHostController.navigate(Screen.Log.route)}
-				) {
+				FloatingActionButton(onLogsClick) {
 					Icon(Icons.Filled.Schedule, null)
 				}
 				Spacer(Modifier.height(10.dp))
-				FloatingActionButton(
-					onClick = { navHostController.navigate(Screen.LogAdd.route) }
-				) {
+				FloatingActionButton(onAddClick) {
 					Icon(Icons.Default.Add, null)
 				}
 			}

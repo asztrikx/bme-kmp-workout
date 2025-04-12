@@ -11,22 +11,37 @@ import hu.asztrikx.workout.stats.screen.StatsScreen
 
 @Composable
 fun NavGraph(navHostController: NavHostController) {
+	val onAddClick = { navHostController.navigate(Screen.LogAdd.route) }
+	val onStatsClick = { navHostController.navigate(Screen.Stats.route) }
+	val onSettingsClick = { navHostController.navigate(Screen.Settings.route) }
+	val onSLogsClick = { navHostController.navigate(Screen.Log.route) }
+	val onBackClick: () -> Unit = { navHostController.popBackStack() }
+
 	NavHost(navController = navHostController, startDestination = Screen.Log.route) {
 		composable(Screen.Log.route) {
-			LogScreen(navHostController)
+			LogScreen(
+				onAddClick,
+				onStatsClick,
+				onSettingsClick,
+				onEditClick = { navHostController.navigate(Screen.LogEdit.createRoute(it)) },
+			)
 		}
 		composable(Screen.LogAdd.route) {
-			LogEditScreen(navHostController, "Add", null)
+			LogEditScreen("Add", null, onBackClick)
 		}
 		composable(Screen.LogEdit.route) { navBackStackEntry ->
 			val id = navBackStackEntry.arguments?.getString("id")!!
-			LogEditScreen(navHostController, "Edit", id.toInt())
+			LogEditScreen("Edit", id.toInt(), onBackClick)
 		}
 		composable(Screen.Stats.route) {
-			StatsScreen(navHostController)
+			StatsScreen(
+				onAddClick,
+				onSLogsClick,
+				onSettingsClick,
+			)
 		}
 		composable(Screen.Settings.route) {
-			SettingsScreen(navHostController)
+			SettingsScreen(onBackClick)
 		}
 	}
 }
