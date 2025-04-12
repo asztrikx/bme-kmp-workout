@@ -17,7 +17,6 @@ import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
 import androidx.compose.material3.MaterialTheme
-import androidx.compose.material3.Switch
 import androidx.compose.material3.Text
 import androidx.compose.material3.TopAppBar
 import androidx.compose.runtime.Composable
@@ -67,26 +66,10 @@ fun SettingsScreen(
 
 					Spacer(Modifier.height(30.dp))
 
-					var localsaveChecked by remember { mutableStateOf(true) }
-					Text("Enable auto sync to local storage", style = MaterialTheme.typography.labelMedium)
-					Row(
-						Modifier.fillMaxWidth().padding(20.dp, 0.dp),
-						verticalAlignment = Alignment.CenterVertically,
-						horizontalArrangement = Arrangement.SpaceBetween
-					) {
-						Text("Save to device also")
-						Switch(
-							checked = localsaveChecked,
-							onCheckedChange = {
-								localsaveChecked = it
-							}
-						)
-					}
-					if (localsaveChecked) {
-						Row(Modifier.fillMaxWidth().padding(20.dp, 0.dp), horizontalArrangement = Arrangement.Center) {
-							Button({ }) {
-								Text("View directory")
-							}
+					Text("Export data", style = MaterialTheme.typography.labelMedium)
+					Row(Modifier.fillMaxWidth().padding(20.dp, 0.dp), horizontalArrangement = Arrangement.Center) {
+						Button({ }) {
+							Text("Export")
 						}
 					}
 
