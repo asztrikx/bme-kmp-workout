@@ -35,7 +35,7 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.rotate
 import androidx.compose.ui.unit.dp
-import hu.asztrikx.workout.presentation.log.Log
+import hu.asztrikx.workout.model.Log
 import hu.asztrikx.workout.presentation.shared.format
 
 @Composable

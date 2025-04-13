@@ -5,7 +5,8 @@ import androidx.compose.material.icons.automirrored.filled.DirectionsRun
 import androidx.compose.material.icons.filled.FitnessCenter
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import hu.asztrikx.workout.presentation.category.Category
+import hu.asztrikx.workout.model.Category
+import hu.asztrikx.workout.model.Settings
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.asStateFlow
@@ -42,7 +43,7 @@ class SettingsViewModel: ViewModel() {
 					hu.asztrikx.workout.presentation.settings.SettingsState.Loading // update
 				delay(0)
 				_state.value = hu.asztrikx.workout.presentation.settings.SettingsState.Result(
-					hu.asztrikx.workout.presentation.settings.Settings(
+					Settings(
 						LocalDate(1998, 1, 2),
 						listOf(
 							category1,

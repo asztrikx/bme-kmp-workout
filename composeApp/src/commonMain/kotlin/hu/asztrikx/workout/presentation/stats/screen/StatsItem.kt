@@ -15,9 +15,9 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
-import hu.asztrikx.workout.presentation.category.Category
+import hu.asztrikx.workout.model.Category
 import hu.asztrikx.workout.presentation.shared.format
-import hu.asztrikx.workout.presentation.stats.QuantityWithDate
+import hu.asztrikx.workout.model.QuantityWithDate
 
 @Composable
 fun StatsItem(category: Category, quantityWithDates: List<QuantityWithDate>) {

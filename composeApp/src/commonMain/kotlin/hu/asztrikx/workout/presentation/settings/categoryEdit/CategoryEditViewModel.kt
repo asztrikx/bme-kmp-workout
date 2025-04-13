@@ -5,7 +5,7 @@ import androidx.compose.material.icons.filled.FitnessCenter
 import androidx.compose.material.icons.filled.Wash
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import hu.asztrikx.workout.presentation.category.Category
+import hu.asztrikx.workout.model.Category
 import kotlinx.coroutines.channels.Channel
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.asStateFlow

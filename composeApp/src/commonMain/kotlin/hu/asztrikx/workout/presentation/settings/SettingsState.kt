@@ -1,5 +1,7 @@
 package hu.asztrikx.workout.presentation.settings
 
+import hu.asztrikx.workout.model.Settings
+
 sealed class SettingsState {
 	data object Loading: SettingsState()
 	data class Error(val error: Throwable): SettingsState()

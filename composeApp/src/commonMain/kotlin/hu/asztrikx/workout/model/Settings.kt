@@ -1,6 +1,5 @@
-package hu.asztrikx.workout.presentation.settings
+package hu.asztrikx.workout.model
 
-import hu.asztrikx.workout.presentation.category.Category
 import kotlinx.datetime.LocalDate
 
 data class Settings (

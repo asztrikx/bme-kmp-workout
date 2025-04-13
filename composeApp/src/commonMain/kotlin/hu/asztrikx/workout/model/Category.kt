@@ -1,4 +1,4 @@
-package hu.asztrikx.workout.presentation.category
+package hu.asztrikx.workout.model
 
 import androidx.compose.ui.graphics.vector.ImageVector
 

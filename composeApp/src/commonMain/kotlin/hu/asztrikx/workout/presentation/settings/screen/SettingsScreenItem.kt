@@ -16,7 +16,7 @@ import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
-import hu.asztrikx.workout.presentation.category.Category
+import hu.asztrikx.workout.model.Category
 import hu.asztrikx.workout.presentation.settings.categoryEdit.CategoryEditDialog
 
 @Composable

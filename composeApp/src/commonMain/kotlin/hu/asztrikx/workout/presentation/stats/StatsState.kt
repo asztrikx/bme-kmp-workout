@@ -1,6 +1,7 @@
 package hu.asztrikx.workout.presentation.stats
 
-import hu.asztrikx.workout.presentation.category.Category
+import hu.asztrikx.workout.model.Category
+import hu.asztrikx.workout.model.QuantityWithDate
 import kotlinx.datetime.LocalDate
 
 sealed class StatsState {

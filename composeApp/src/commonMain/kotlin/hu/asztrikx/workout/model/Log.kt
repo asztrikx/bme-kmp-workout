@@ -1,6 +1,5 @@
-package hu.asztrikx.workout.presentation.log
+package hu.asztrikx.workout.model
 
-import hu.asztrikx.workout.presentation.quantity.Quantity
 import kotlinx.datetime.LocalDate
 
 data class Log(

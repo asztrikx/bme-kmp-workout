@@ -1,4 +1,4 @@
-package hu.asztrikx.workout.presentation.stats
+package hu.asztrikx.workout.model
 
 import kotlinx.datetime.LocalDate
 

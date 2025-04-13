@@ -5,9 +5,9 @@ import androidx.compose.material.icons.automirrored.filled.DirectionsRun
 import androidx.compose.material.icons.filled.FitnessCenter
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import hu.asztrikx.workout.presentation.category.Category
-import hu.asztrikx.workout.presentation.log.Log
-import hu.asztrikx.workout.presentation.quantity.Quantity
+import hu.asztrikx.workout.model.Category
+import hu.asztrikx.workout.model.Log
+import hu.asztrikx.workout.model.Quantity
 import hu.asztrikx.workout.presentation.shared.currentDate
 import kotlinx.coroutines.channels.Channel
 import kotlinx.coroutines.flow.MutableStateFlow

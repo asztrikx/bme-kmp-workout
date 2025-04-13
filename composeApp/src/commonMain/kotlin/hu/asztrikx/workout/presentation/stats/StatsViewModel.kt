@@ -4,14 +4,14 @@ import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.AssistWalker
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import hu.asztrikx.workout.presentation.category.Category
+import hu.asztrikx.workout.model.Category
+import hu.asztrikx.workout.model.QuantityWithDate
 import hu.asztrikx.workout.presentation.shared.currentDate
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.flow.update
 import kotlinx.coroutines.launch
-import kotlinx.datetime.LocalDate
 
 class StatsViewModel: ViewModel() {
 	private val _state = MutableStateFlow<StatsState>(StatsState.Loading)
