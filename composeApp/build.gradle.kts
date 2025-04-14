@@ -54,6 +54,11 @@ kotlin {
             implementation(libs.koin.compose.viewmodel)
             // Chart
             implementation(libs.charts)
+            // Room, SQLite manager
+            implementation(libs.androidx.room.gradle.plugin)
+            implementation(libs.androidx.room.compiler)
+            implementation(libs.androidx.room.runtime)
+            implementation(libs.androidx.sqlite.bundled)
         }
         desktopMain.dependencies {
             implementation(compose.desktop.currentOs)
@@ -86,6 +91,10 @@ android {
     compileOptions {
         sourceCompatibility = JavaVersion.VERSION_11
         targetCompatibility = JavaVersion.VERSION_11
+    }
+    // https://github.com/Inconnu08/android-ratingreviews/issues/12#issuecomment-685880511
+    configurations {
+        implementation.get().exclude(mapOf("group" to "org.jetbrains", "module" to "annotations"))
     }
 }
 
