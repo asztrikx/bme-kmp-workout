@@ -2,20 +2,21 @@ package hu.asztrikx.workout.presentation.stats
 
 import hu.asztrikx.workout.model.Category
 import hu.asztrikx.workout.model.QuantityWithDate
+import hu.asztrikx.workout.model.Stats
 import kotlinx.datetime.LocalDate
 
 sealed class StatsState {
 	data object Loading: StatsState()
 	data class Error(val error: Throwable): StatsState()
 	data class Result(
-		private val quantityWithDates: List<List<QuantityWithDate>>,
-		val categories: List<Category>,
+		private val statsByCategory: List<Stats>,
 		val startDate: LocalDate,
 	): StatsState() {
-		fun quantityWithDates() =
-			quantityWithDates.map { quantityWithDates ->
-				quantityWithDates.filter { quantityWithDate ->
-					quantityWithDate.date >= startDate
+		fun statsByCategory() =
+			statsByCategory.map { stats ->
+				stats.category to
+				stats.stats.filter {
+					it.date >= startDate
 				}
 			}
 	}

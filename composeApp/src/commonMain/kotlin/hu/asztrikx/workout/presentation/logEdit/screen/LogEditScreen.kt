@@ -35,7 +35,7 @@ import org.koin.compose.koinInject
 @Composable
 fun LogEditScreen(
 	text: String,
-	id: Int?,
+	id: Long?,
 	onBackClick: () -> Unit,
 ) {
 	val viewModel: LogEditViewModel = koinInject()

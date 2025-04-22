@@ -35,7 +35,7 @@ fun LogScreen(
 	onAddClick: () -> Unit,
 	onStatsClick: () -> Unit,
 	onSettingsClick: () -> Unit,
-	onEditClick: (Int) -> Unit,
+	onEditClick: (Long) -> Unit,
 ) {
 	val viewModel: LogViewModel = koinInject()
 	val state = viewModel.state.collectAsState().value

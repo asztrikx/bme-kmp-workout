@@ -34,7 +34,7 @@ fun NavGraph(navHostController: NavHostController) {
 			// koinInject(navHostController.getBackStackEntry(Screen.Log.route))
 
 			val id = navBackStackEntry.arguments?.getString("id")!!
-			LogEditScreen("Edit", id.toInt(), onBackClick)
+			LogEditScreen("Edit", id.toLong(), onBackClick)
 		}
 		composable(Screen.Stats.route) {
 			StatsScreen(

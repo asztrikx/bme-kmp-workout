@@ -1,7 +1,6 @@
 package hu.asztrikx.workout.model
 
-data class Quantity(
-	val id: Long,
+data class Stats(
 	val category: Category,
-	val count: Float?,
+	val stats: List<QuantityWithDate>,
 )

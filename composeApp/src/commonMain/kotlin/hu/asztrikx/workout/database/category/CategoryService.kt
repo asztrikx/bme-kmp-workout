@@ -1,0 +1,23 @@
+package hu.asztrikx.workout.database.category
+
+import hu.asztrikx.workout.model.Category
+import kotlinx.coroutines.flow.map
+
+class CategoryService(private val repository: CategoryRepository) {
+	suspend fun insert(item: Category) =
+		repository.insert(item.asEntity())
+
+	fun getAll() =
+		repository.getAll().map { list ->
+			list.map { it.asModel() }
+		}
+
+	suspend fun update(item: Category) =
+		repository.update(item.asEntity())
+
+	suspend fun delete(item: Category) =
+		repository.delete(item.asEntity())
+
+	fun find(id: Long) =
+		repository.find(id).map { it.asModel() }
+}

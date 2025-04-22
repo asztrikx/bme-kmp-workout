@@ -1,13 +1,9 @@
 package hu.asztrikx.workout.presentation.logEdit
 
-import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.automirrored.filled.DirectionsRun
-import androidx.compose.material.icons.filled.FitnessCenter
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import hu.asztrikx.workout.model.Category
+import hu.asztrikx.workout.database.log.LogService
 import hu.asztrikx.workout.model.Log
-import hu.asztrikx.workout.model.Quantity
 import hu.asztrikx.workout.presentation.shared.currentDate
 import kotlinx.coroutines.channels.Channel
 import kotlinx.coroutines.flow.MutableStateFlow
@@ -15,9 +11,8 @@ import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.flow.receiveAsFlow
 import kotlinx.coroutines.flow.update
 import kotlinx.coroutines.launch
-import kotlinx.datetime.LocalDate
 
-class LogEditViewModel: ViewModel() {
+class LogEditViewModel(private val service: LogService): ViewModel() {
 	private val _state = MutableStateFlow(Log(-1, currentDate(), listOf()))
 	val state = _state.asStateFlow()
 
@@ -28,29 +23,13 @@ class LogEditViewModel: ViewModel() {
 		_state.update { Log(-1, currentDate(), listOf()) }
 	}
 
-	fun edit(id: Int) {
-		val category1 = Category(
-			1,
-			Icons.AutoMirrored.Filled.DirectionsRun,
-			"Running",
-			"km",
-		)
-		val category2 = Category(
-			2,
-			Icons.Default.FitnessCenter,
-			"Lifting",
-			"db",
-		)
-
-		_state.update { Log(
-			1,
-			LocalDate(2021,1,2),
-			listOf(
-				Quantity(1, category1, 10f),
-				Quantity(2, category2, 1.2f),
-				Quantity(3, category2, 1.2f),
-			)
-		) }
+	fun edit(id: Long) {
+		viewModelScope.launch {
+			service.getAllWithQuantityAndCategory().collect { logs ->
+				val log = logs.find { it.id == id }!!
+				_state.update { log }
+			}
+		}
 	}
 
 	fun onEvent(event: LogEditEvent) {

@@ -34,7 +34,7 @@ fun CategoryEditDialog(
 	title: String,
 	onDismiss: () -> Unit,
 	onAdd: () -> Unit,
-	id: Int?,
+	id: Long?,
 ) {
 	val viewModel: CategoryEditViewModel = koinInject()
 	val state by viewModel.state.collectAsState()
