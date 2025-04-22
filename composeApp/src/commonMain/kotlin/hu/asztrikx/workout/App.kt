@@ -39,9 +39,11 @@ fun App() {
 		NavGraph(navHostController)
 	}
 }
+
 expect fun platformModule(): Module
 
 val repositories = module {
+	includes(platformModule())
 	single<CategoryRepository> { CategoryRepositoryDao(get<WorkoutDatabase>().categoryDao) }
 	single<LogRepository> { LogRepositoryDao(get<WorkoutDatabase>().logDao) }
 	single<QuantityRepository> { QuantityRepositoryDao(get<WorkoutDatabase>().quantityDao) }
@@ -50,24 +52,26 @@ val repositories = module {
 }
 
 val services = module {
-	single { CategoryService(get<CategoryRepository>()) }
-	single { LogService(get<LogRepository>()) }
+	includes(repositories)
+	single { CategoryService(get()) }
+	single { LogService(get()) }
 	//single { QuantityService(get<QuantityRepository>()) }
-	single { SettingsService(get<SettingsRepository>()) }
-	single { StatsService(get<StatsRepository>()) }
+	single { SettingsService(get()) }
+	single { StatsService(get()) }
 }
 
 val viewModels = module {
-	single { CategoryEditViewModel(get<CategoryService>()) }
-	single { LogViewModel(get<LogService>()) }
-	single { LogEditViewModel(get<LogService>()) }
-	single { SettingsViewModel(get<SettingsService>()) }
-	single { StatsViewModel(get<StatsService>()) }
+	includes(services)
+	single { CategoryEditViewModel(get()) }
+	single { LogViewModel(get()) }
+	single { LogEditViewModel(get()) }
+	single { SettingsViewModel(get()) }
+	single { StatsViewModel(get()) }
 }
 
 fun initKoin(config: KoinAppDeclaration? = null) {
 	startKoin {
 		config?.invoke(this)
-		modules(platformModule(), repositories, services, viewModels)
+		modules(viewModels)
 	}
 }
