@@ -13,6 +13,7 @@ interface LogDao {
 	@Insert
 	suspend fun insert(item: LogEntity)
 
+	@Transaction
 	@Query("SELECT * FROM LogEntity")
 	fun getAllWithQuantityAndCategory(): Flow<List<LogWithQuantitiesAndCategories>>
 
