@@ -7,6 +7,8 @@ plugins {
     alias(libs.plugins.androidApplication)
     alias(libs.plugins.composeMultiplatform)
     alias(libs.plugins.composeCompiler)
+    alias(libs.plugins.ksp)
+    alias(libs.plugins.room)
 }
 
 kotlin {
@@ -55,9 +57,9 @@ kotlin {
             // Chart
             implementation(libs.charts)
             // Room, SQLite manager
-            implementation(libs.androidx.room.gradle.plugin)
-            implementation(libs.androidx.room.compiler)
             implementation(libs.androidx.room.runtime)
+            implementation(libs.androidx.room.ktx)
+            implementation(libs.androidx.room.gradle.plugin)
             implementation(libs.androidx.sqlite.bundled)
         }
         desktopMain.dependencies {
@@ -93,14 +95,23 @@ android {
         targetCompatibility = JavaVersion.VERSION_11
     }
     // https://github.com/Inconnu08/android-ratingreviews/issues/12#issuecomment-685880511
-    configurations {
+    /*configurations {
         implementation.get().exclude(mapOf("group" to "org.jetbrains", "module" to "annotations"))
-    }
+    }*/
 }
 
 dependencies {
     implementation(libs.androidx.material3.android)
     debugImplementation(compose.uiTooling)
+
+    // Room, SQLite manager
+    add("kspAndroid", libs.androidx.room.compiler)
+    add("kspDesktop", libs.androidx.room.compiler)
+    //ksp(libs.androidx.room.compiler)
+}
+
+room {
+    schemaDirectory("$projectDir/schemas")
 }
 
 compose.desktop {
