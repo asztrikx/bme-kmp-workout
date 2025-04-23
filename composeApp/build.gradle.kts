@@ -7,6 +7,8 @@ plugins {
     alias(libs.plugins.androidApplication)
     alias(libs.plugins.composeMultiplatform)
     alias(libs.plugins.composeCompiler)
+    // https://medium.com/@kaito_and_droid/setting-up-jetpack-room-in-a-kotlin-multiplatform-project-a-step-by-step-guide-4d0d6c823619
+    // https://github.dev/android/kotlin-multiplatform-samples
     alias(libs.plugins.ksp)
     alias(libs.plugins.room)
 }
