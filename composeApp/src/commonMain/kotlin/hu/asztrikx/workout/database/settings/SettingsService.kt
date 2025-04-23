@@ -2,7 +2,9 @@ package hu.asztrikx.workout.database.settings
 
 import hu.asztrikx.workout.database.category.asModel
 import hu.asztrikx.workout.model.Settings
+import hu.asztrikx.workout.presentation.shared.currentDate
 import kotlinx.coroutines.flow.Flow
+import kotlinx.coroutines.flow.first
 import kotlinx.coroutines.flow.map
 
 class SettingsService(private val repository: SettingsRepository) {
