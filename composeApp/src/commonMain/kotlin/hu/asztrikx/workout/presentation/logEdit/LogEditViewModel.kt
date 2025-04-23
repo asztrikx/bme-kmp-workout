@@ -46,8 +46,14 @@ class LogEditViewModel(private val service: LogService): ViewModel() {
 				})}
 			}
 			is LogEditEvent.Save -> {
-				// TODO lementés (viewModelScope), fő screen valahogy frissüljön majd
 				viewModelScope.launch {
+					_state.value.let {
+						if (it.id == -1L) {
+							service.insert(it)
+						} else {
+							service.update(it)
+						}
+					}
 					_uiEvent.send(LogEditUIEvent.Success)
 				}
 			}
