@@ -28,8 +28,8 @@ import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
+import hu.asztrikx.workout.presentation.settings.SettingsEvent
 import hu.asztrikx.workout.presentation.settings.SettingsState
-import hu.asztrikx.workout.presentation.settings.SettingsViewModel
 import hu.asztrikx.workout.presentation.settings.categoryEdit.CategoryEditDialog
 import hu.asztrikx.workout.presentation.shared.BetterScaffold
 import hu.asztrikx.workout.presentation.shared.CustomDatePicker
@@ -60,9 +60,12 @@ fun SettingsScreen(
 		when (state) {
 			is SettingsState.Result -> {
 				Column(Modifier.padding(20.dp)) {
-					var startDate by remember { mutableStateOf(state.settings.startDate) }
 					Text("Start of plot range", style = MaterialTheme.typography.labelMedium)
-					CustomDatePicker(startDate, { startDate = it }, { })
+					CustomDatePicker(
+						state.settings.startDate,
+						{ viewModel.onEvent(SettingsEvent.DateChange(it)) },
+						{}
+					)
 
 					Spacer(Modifier.height(30.dp))
 

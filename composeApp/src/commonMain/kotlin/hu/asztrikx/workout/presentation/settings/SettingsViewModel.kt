@@ -30,4 +30,13 @@ class SettingsViewModel(private val service: SettingsService): ViewModel() {
 			}
 		}
 	}
+
+	fun onEvent(event: SettingsEvent) = viewModelScope.launch {
+		val settings = (_state.value as SettingsState.Result).settings
+		when (event) {
+			is SettingsEvent.DateChange -> {
+				service.update(settings.copy(startDate = event.startDate))
+			}
+		}
+	}
 }
