@@ -26,4 +26,13 @@ class SettingsService(private val repository: SettingsRepository) {
 
 	suspend fun delete(item: Settings) =
 		repository.delete(item.asEntity())
+
+	suspend fun initialize() {
+		if (getAllWithCategories().first().isEmpty()) {
+			insert(Settings(
+				currentDate(),
+				listOf(),
+			))
+		}
+	}
 }
