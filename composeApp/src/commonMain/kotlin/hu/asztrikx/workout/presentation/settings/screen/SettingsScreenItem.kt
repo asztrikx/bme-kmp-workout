@@ -7,6 +7,7 @@ import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.AssistWalker
 import androidx.compose.material.icons.filled.Delete
 import androidx.compose.material3.Card
 import androidx.compose.material3.Icon
@@ -22,19 +23,21 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 import hu.asztrikx.workout.model.Category
 import hu.asztrikx.workout.presentation.settings.categoryEdit.CategoryEditDialog
+import org.koin.compose.koinInject
 
 @Composable
 fun SettingsScreenItem(category: Category) {
+	val viewModel: SettingsScreenItemViewModel = koinInject()
 	var categoryEditShow by remember { mutableStateOf(false) }
 
 	Card({ categoryEditShow = !categoryEditShow }) {
 		Row(Modifier.fillMaxWidth(), verticalAlignment = Alignment.CenterVertically) {
 			Row(Modifier.weight(1f).padding(20.dp), horizontalArrangement = Arrangement.SpaceBetween) {
-				Icon(category.icon, null)
+				Icon(category.icon.run { Icons.Default.AssistWalker }, null)
 				Text(category.name)
 				Text(category.unit)
 			}
-			IconButton({ /*TODO*/ }) {
+			IconButton({ viewModel.delete(category) }) {
 				Icon(Icons.Default.Delete, null)
 			}
 		}
@@ -44,6 +47,7 @@ fun SettingsScreenItem(category: Category) {
 	if (categoryEditShow) {
 		CategoryEditDialog(
 			"Edit category",
+			"Edit",
 			{ categoryEditShow = !categoryEditShow },
 			{ categoryEditShow = !categoryEditShow },
 			category.id,

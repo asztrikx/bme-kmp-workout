@@ -1,5 +1,6 @@
 package hu.asztrikx.workout.database.stats
 
+import hu.asztrikx.workout.database.GENERATE
 import hu.asztrikx.workout.model.Category
 import hu.asztrikx.workout.model.QuantityWithDate
 import hu.asztrikx.workout.model.Stats
@@ -13,7 +14,7 @@ class StatsService(private val repository: StatsRepository) {
 					val (categoryName, categoryUnit) = category
 					Stats(
 						Category(
-							-1,
+							GENERATE,
 							name = categoryName,
 							icon = "TODO",
 							unit = categoryUnit

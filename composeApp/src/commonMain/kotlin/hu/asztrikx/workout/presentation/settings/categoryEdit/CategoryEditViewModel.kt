@@ -5,6 +5,7 @@ import androidx.compose.material.icons.filled.FitnessCenter
 import androidx.compose.material.icons.filled.Wash
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import hu.asztrikx.workout.database.GENERATE
 import hu.asztrikx.workout.database.category.CategoryService
 import kotlinx.coroutines.channels.Channel
 import kotlinx.coroutines.flow.MutableStateFlow
@@ -24,7 +25,7 @@ class CategoryEditViewModel(
 
 	fun new() {
 		_state.update {
-			CategoryUI(-1, Icons.Default.FitnessCenter, "", "")
+			CategoryUI(GENERATE, Icons.Default.FitnessCenter, "", "")
 		}
 	}
 
@@ -49,7 +50,13 @@ class CategoryEditViewModel(
 			}
 			is CategoryEditEvent.Save -> {
 				viewModelScope.launch {
-					service.update(state.value.asModel())
+					_state.value.asModel().let {
+						if (it.id == GENERATE) {
+							service.insert(it)
+						} else {
+							service.update(it)
+						}
+					}
 					_uiEvent.send(CategoryEditUIEvent.Success)
 				}
 			}

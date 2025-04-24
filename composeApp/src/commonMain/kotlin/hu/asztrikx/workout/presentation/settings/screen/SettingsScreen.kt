@@ -89,6 +89,7 @@ fun SettingsScreen(
 					if (categoryAddShow) {
 						CategoryEditDialog(
 							"Add category",
+							"Add",
 							{ categoryAddShow = !categoryAddShow },
 							{ categoryAddShow = !categoryAddShow },
 							null,

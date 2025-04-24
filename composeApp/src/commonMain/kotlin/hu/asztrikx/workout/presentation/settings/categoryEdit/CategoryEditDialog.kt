@@ -32,8 +32,9 @@ import org.koin.compose.koinInject
 @Composable
 fun CategoryEditDialog(
 	title: String,
+	confirmText: String,
 	onDismiss: () -> Unit,
-	onAdd: () -> Unit,
+	onSave: () -> Unit,
 	id: Long?,
 ) {
 	val viewModel: CategoryEditViewModel = koinInject()
@@ -51,7 +52,7 @@ fun CategoryEditDialog(
 		viewModel.uiEvent.collect { uiEvent ->
 			when (uiEvent) {
 				is CategoryEditUIEvent.Success -> {
-					onAdd()
+					onSave()
 				}
 			}
 		}
@@ -99,10 +100,11 @@ fun CategoryEditDialog(
 		onDismissRequest = { onDismiss() },
 		confirmButton = {
 			TextButton({
-				onAdd()
+				viewModel.onEvent(CategoryEditEvent.Save)
+				onSave()
 				onDismiss()
 			}) {
-				Text("Add")
+				Text(confirmText)
 			}
 		},
 		dismissButton = {
