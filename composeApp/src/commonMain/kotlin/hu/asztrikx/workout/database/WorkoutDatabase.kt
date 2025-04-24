@@ -22,7 +22,7 @@ import hu.asztrikx.workout.database.stats.StatsDao
 		QuantityEntity::class,
 		SettingsEntity::class,
 	],
-	version = 3
+	version = 4
 )
 @ConstructedBy(AppDatabaseConstructor::class)
 @TypeConverters(Converters::class)
@@ -32,10 +32,6 @@ abstract class WorkoutDatabase : RoomDatabase() {
 	abstract val quantityDao: QuantityDao
 	abstract val settingsDao: SettingsDao
 	abstract val statsDao: StatsDao
-	/*abstract fun getCategoryDao(): CategoryDao
-	abstract fun getLogDao(): LogDao
-	abstract fun getQuantityDao(): QuantityDao
-	abstract fun getSettingsDao(): SettingsDao*/
 }
 
 @Suppress("NO_ACTUAL_FOR_EXPECT", "EXPECT_ACTUAL_CLASSIFIERS_ARE_IN_BETA_WARNING")

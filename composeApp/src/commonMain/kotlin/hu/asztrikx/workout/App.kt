@@ -25,6 +25,7 @@ import hu.asztrikx.workout.presentation.logEdit.LogEditViewModel
 import hu.asztrikx.workout.presentation.navigation.NavGraph
 import hu.asztrikx.workout.presentation.settings.SettingsViewModel
 import hu.asztrikx.workout.presentation.settings.categoryEdit.CategoryEditViewModel
+import hu.asztrikx.workout.presentation.settings.screen.SettingsScreenItemViewModel
 import hu.asztrikx.workout.presentation.stats.StatsViewModel
 import kotlinx.coroutines.launch
 import org.jetbrains.compose.ui.tooling.preview.Preview
@@ -81,6 +82,7 @@ val viewModels = module {
 	single { LogEditViewModel(get()) }
 	single { SettingsViewModel(get()) }
 	single { StatsViewModel(get()) }
+	single { SettingsScreenItemViewModel(get()) }
 }
 
 fun initKoin(config: KoinAppDeclaration? = null) {
