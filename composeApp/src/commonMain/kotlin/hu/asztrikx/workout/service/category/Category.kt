@@ -1,4 +1,4 @@
-package hu.asztrikx.workout.model
+package hu.asztrikx.workout.service.category
 
 data class Category(
 	val id: Long,

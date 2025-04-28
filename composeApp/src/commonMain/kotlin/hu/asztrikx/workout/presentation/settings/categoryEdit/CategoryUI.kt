@@ -3,7 +3,7 @@ package hu.asztrikx.workout.presentation.settings.categoryEdit
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.AssistWalker
 import androidx.compose.ui.graphics.vector.ImageVector
-import hu.asztrikx.workout.model.Category
+import hu.asztrikx.workout.service.category.Category
 
 data class CategoryUI(
 	val id: Long,

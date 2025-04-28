@@ -2,7 +2,7 @@ package hu.asztrikx.workout.database.category
 
 import androidx.room.Entity
 import androidx.room.PrimaryKey
-import hu.asztrikx.workout.model.Category
+import hu.asztrikx.workout.service.category.Category
 
 @Entity
 data class CategoryEntity(

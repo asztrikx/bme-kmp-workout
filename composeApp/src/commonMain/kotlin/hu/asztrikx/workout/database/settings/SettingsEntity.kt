@@ -5,7 +5,7 @@ import androidx.room.Entity
 import androidx.room.PrimaryKey
 import androidx.room.Relation
 import hu.asztrikx.workout.database.category.CategoryEntity
-import hu.asztrikx.workout.model.Settings
+import hu.asztrikx.workout.service.settings.Settings
 import kotlinx.datetime.LocalDate
 
 @Entity

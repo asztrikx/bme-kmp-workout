@@ -3,9 +3,9 @@ package hu.asztrikx.workout.presentation.stats.screen
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.unit.dp
-import hu.asztrikx.workout.model.Category
+import hu.asztrikx.workout.service.category.Category
 import hu.asztrikx.workout.presentation.shared.format
-import hu.asztrikx.workout.model.QuantityWithDate
+import hu.asztrikx.workout.service.stats.QuantityWithDate
 import io.github.dautovicharis.charts.LineChart
 import io.github.dautovicharis.charts.model.toChartDataSet
 import io.github.dautovicharis.charts.style.ChartViewDefaults

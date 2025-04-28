@@ -3,10 +3,10 @@ package hu.asztrikx.workout.presentation.logEdit
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import hu.asztrikx.workout.database.GENERATE
-import hu.asztrikx.workout.database.category.CategoryService
-import hu.asztrikx.workout.database.log.LogService
-import hu.asztrikx.workout.model.Log
-import hu.asztrikx.workout.model.Quantity
+import hu.asztrikx.workout.service.category.CategoryService
+import hu.asztrikx.workout.service.log.LogService
+import hu.asztrikx.workout.service.log.Log
+import hu.asztrikx.workout.service.quantity.Quantity
 import hu.asztrikx.workout.presentation.shared.currentDate
 import kotlinx.coroutines.channels.Channel
 import kotlinx.coroutines.flow.MutableStateFlow

@@ -5,7 +5,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.rememberCoroutineScope
 import androidx.navigation.compose.rememberNavController
-import hu.asztrikx.workout.database.settings.SettingsService
+import hu.asztrikx.workout.service.settings.SettingsService
 import hu.asztrikx.workout.presentation.navigation.NavGraph
 import kotlinx.coroutines.launch
 import org.jetbrains.compose.ui.tooling.preview.Preview

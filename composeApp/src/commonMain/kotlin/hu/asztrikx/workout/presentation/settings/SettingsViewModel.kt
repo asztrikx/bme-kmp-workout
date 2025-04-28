@@ -2,7 +2,7 @@ package hu.asztrikx.workout.presentation.settings
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import hu.asztrikx.workout.database.settings.SettingsService
+import hu.asztrikx.workout.service.settings.SettingsService
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.flow.update

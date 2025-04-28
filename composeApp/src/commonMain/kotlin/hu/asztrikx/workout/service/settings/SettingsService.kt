@@ -1,7 +1,8 @@
-package hu.asztrikx.workout.database.settings
+package hu.asztrikx.workout.service.settings
 
 import hu.asztrikx.workout.database.category.asModel
-import hu.asztrikx.workout.model.Settings
+import hu.asztrikx.workout.database.settings.SettingsRepository
+import hu.asztrikx.workout.database.settings.asEntity
 import hu.asztrikx.workout.presentation.shared.currentDate
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.first
@@ -31,10 +32,12 @@ class SettingsService(private val repository: SettingsRepository) {
 
 	suspend fun initialize() {
 		if (getAllWithCategories().first().isEmpty()) {
-			insert(Settings(
+			insert(
+				Settings(
 				currentDate(),
 				listOf(),
-			))
+			)
+			)
 		}
 	}
 }

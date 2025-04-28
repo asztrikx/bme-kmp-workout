@@ -21,7 +21,7 @@ import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
-import hu.asztrikx.workout.model.Category
+import hu.asztrikx.workout.service.category.Category
 import hu.asztrikx.workout.presentation.settings.categoryEdit.CategoryEditDialog
 import org.koin.compose.koinInject
 

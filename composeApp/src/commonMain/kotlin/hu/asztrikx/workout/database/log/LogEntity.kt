@@ -7,7 +7,7 @@ import androidx.room.Relation
 import hu.asztrikx.workout.database.quantity.QuantityEntity
 import hu.asztrikx.workout.database.quantity.QuantityWithCategory
 import hu.asztrikx.workout.database.quantity.asModel
-import hu.asztrikx.workout.model.Log
+import hu.asztrikx.workout.service.log.Log
 import kotlinx.datetime.LocalDate
 
 @Entity

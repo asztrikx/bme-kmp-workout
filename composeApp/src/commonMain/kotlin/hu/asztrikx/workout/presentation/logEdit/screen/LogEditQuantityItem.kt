@@ -19,7 +19,7 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.unit.dp
-import hu.asztrikx.workout.model.Quantity
+import hu.asztrikx.workout.service.quantity.Quantity
 
 @Composable
 fun LogEditQuantityItem(

@@ -1,6 +1,8 @@
-package hu.asztrikx.workout.database.category
+package hu.asztrikx.workout.service.category
 
-import hu.asztrikx.workout.model.Category
+import hu.asztrikx.workout.database.category.CategoryRepository
+import hu.asztrikx.workout.database.category.asEntity
+import hu.asztrikx.workout.database.category.asModel
 import kotlinx.coroutines.flow.map
 
 class CategoryService(private val repository: CategoryRepository) {

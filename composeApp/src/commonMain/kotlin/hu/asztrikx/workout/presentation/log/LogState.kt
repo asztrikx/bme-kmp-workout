@@ -1,6 +1,6 @@
 package hu.asztrikx.workout.presentation.log
 
-import hu.asztrikx.workout.model.Log
+import hu.asztrikx.workout.service.log.Log
 
 sealed class LogState {
 	data object Loading: LogState()

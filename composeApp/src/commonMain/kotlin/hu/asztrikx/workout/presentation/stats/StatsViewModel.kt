@@ -2,7 +2,7 @@ package hu.asztrikx.workout.presentation.stats
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import hu.asztrikx.workout.database.stats.StatsService
+import hu.asztrikx.workout.service.stats.StatsService
 import hu.asztrikx.workout.presentation.shared.currentDate
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.asStateFlow

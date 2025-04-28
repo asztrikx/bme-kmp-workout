@@ -1,9 +1,10 @@
-package hu.asztrikx.workout.database.log
+package hu.asztrikx.workout.service.log
 
 import hu.asztrikx.workout.database.PLACEHOLDER
+import hu.asztrikx.workout.database.log.LogEntity
+import hu.asztrikx.workout.database.log.LogRepository
 import hu.asztrikx.workout.database.quantity.QuantityEntity
 import hu.asztrikx.workout.database.quantity.asModel
-import hu.asztrikx.workout.model.Log
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.map
 
@@ -52,9 +53,11 @@ class LogService(private val repository: LogRepository) {
 	}
 
 	suspend fun delete(item: Log) = item.run {
-		repository.delete(LogEntity(
+		repository.delete(
+			LogEntity(
 			id,
 			date,
-		))
+		)
+		)
 	}
 }

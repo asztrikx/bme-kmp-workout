@@ -1,6 +1,6 @@
 package hu.asztrikx.workout.presentation.settings
 
-import hu.asztrikx.workout.model.Settings
+import hu.asztrikx.workout.service.settings.Settings
 
 sealed class SettingsState {
 	data object Loading: SettingsState()

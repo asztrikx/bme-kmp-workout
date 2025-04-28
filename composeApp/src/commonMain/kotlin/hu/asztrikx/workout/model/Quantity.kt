@@ -1,7 +1,0 @@
-package hu.asztrikx.workout.model
-
-data class Quantity(
-	val id: Long,
-	val category: Category,
-	val count: Float?,
-)

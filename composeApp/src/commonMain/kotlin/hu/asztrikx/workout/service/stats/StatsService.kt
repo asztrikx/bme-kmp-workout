@@ -1,9 +1,8 @@
-package hu.asztrikx.workout.database.stats
+package hu.asztrikx.workout.service.stats
 
 import hu.asztrikx.workout.database.GENERATE
-import hu.asztrikx.workout.model.Category
-import hu.asztrikx.workout.model.QuantityWithDate
-import hu.asztrikx.workout.model.Stats
+import hu.asztrikx.workout.database.stats.StatsRepository
+import hu.asztrikx.workout.service.category.Category
 import kotlinx.coroutines.flow.map
 
 class StatsService(private val repository: StatsRepository) {

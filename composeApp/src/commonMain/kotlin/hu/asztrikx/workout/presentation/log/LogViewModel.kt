@@ -2,14 +2,10 @@ package hu.asztrikx.workout.presentation.log
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import hu.asztrikx.workout.database.log.LogRepository
-import hu.asztrikx.workout.database.log.LogService
-import hu.asztrikx.workout.model.Log
-import kotlinx.coroutines.delay
+import hu.asztrikx.workout.service.log.LogService
+import hu.asztrikx.workout.service.log.Log
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.asStateFlow
-import kotlinx.coroutines.flow.collect
-import kotlinx.coroutines.flow.map
 import kotlinx.coroutines.flow.update
 import kotlinx.coroutines.launch
 

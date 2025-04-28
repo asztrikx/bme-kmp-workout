@@ -6,7 +6,7 @@ import androidx.room.PrimaryKey
 import androidx.room.Relation
 import hu.asztrikx.workout.database.category.CategoryEntity
 import hu.asztrikx.workout.database.category.asModel
-import hu.asztrikx.workout.model.Quantity
+import hu.asztrikx.workout.service.quantity.Quantity
 
 @Entity
 data class QuantityEntity(
