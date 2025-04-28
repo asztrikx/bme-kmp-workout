@@ -30,7 +30,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 import hu.asztrikx.workout.presentation.settings.SettingsEvent
 import hu.asztrikx.workout.presentation.settings.SettingsState
-import hu.asztrikx.workout.presentation.settings.categoryEdit.CategoryEditDialog
+import hu.asztrikx.workout.presentation.categoryEdit.CategoryEditDialog
 import hu.asztrikx.workout.presentation.shared.BetterScaffold
 import hu.asztrikx.workout.presentation.shared.CustomDatePicker
 import hu.asztrikx.workout.presentation.shared.LoadingScreen

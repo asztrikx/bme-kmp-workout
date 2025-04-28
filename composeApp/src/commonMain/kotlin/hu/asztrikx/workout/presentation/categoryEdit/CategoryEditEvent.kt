@@ -1,4 +1,4 @@
-package hu.asztrikx.workout.presentation.settings.categoryEdit
+package hu.asztrikx.workout.presentation.categoryEdit
 
 import androidx.compose.ui.graphics.vector.ImageVector
 

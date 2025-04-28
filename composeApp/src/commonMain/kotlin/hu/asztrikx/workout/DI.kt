@@ -18,7 +18,7 @@ import hu.asztrikx.workout.service.stats.StatsService
 import hu.asztrikx.workout.presentation.log.LogViewModel
 import hu.asztrikx.workout.presentation.logEdit.LogEditViewModel
 import hu.asztrikx.workout.presentation.settings.SettingsViewModel
-import hu.asztrikx.workout.presentation.settings.categoryEdit.CategoryEditViewModel
+import hu.asztrikx.workout.presentation.categoryEdit.CategoryEditViewModel
 import hu.asztrikx.workout.presentation.settings.screen.SettingsScreenItemViewModel
 import hu.asztrikx.workout.presentation.stats.StatsViewModel
 import org.koin.core.context.startKoin

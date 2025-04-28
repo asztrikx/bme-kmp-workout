@@ -22,7 +22,7 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 import hu.asztrikx.workout.service.category.Category
-import hu.asztrikx.workout.presentation.settings.categoryEdit.CategoryEditDialog
+import hu.asztrikx.workout.presentation.categoryEdit.CategoryEditDialog
 import org.koin.compose.koinInject
 
 @Composable
