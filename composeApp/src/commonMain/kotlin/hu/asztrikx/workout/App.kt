@@ -79,7 +79,7 @@ val viewModels = module {
 	includes(services)
 	single { CategoryEditViewModel(get()) }
 	single { LogViewModel(get()) }
-	single { LogEditViewModel(get()) }
+	single { LogEditViewModel(get(), get()) }
 	single { SettingsViewModel(get()) }
 	single { StatsViewModel(get()) }
 	single { SettingsScreenItemViewModel(get()) }

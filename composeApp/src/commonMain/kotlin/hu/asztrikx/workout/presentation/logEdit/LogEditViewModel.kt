@@ -3,17 +3,23 @@ package hu.asztrikx.workout.presentation.logEdit
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import hu.asztrikx.workout.database.GENERATE
+import hu.asztrikx.workout.database.category.CategoryService
 import hu.asztrikx.workout.database.log.LogService
 import hu.asztrikx.workout.model.Log
+import hu.asztrikx.workout.model.Quantity
 import hu.asztrikx.workout.presentation.shared.currentDate
 import kotlinx.coroutines.channels.Channel
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.asStateFlow
+import kotlinx.coroutines.flow.first
 import kotlinx.coroutines.flow.receiveAsFlow
 import kotlinx.coroutines.flow.update
 import kotlinx.coroutines.launch
 
-class LogEditViewModel(private val service: LogService): ViewModel() {
+class LogEditViewModel(
+	private val service: LogService,
+	private val categoryService: CategoryService,
+): ViewModel() {
 	private val _state = MutableStateFlow(Log(GENERATE, currentDate(), listOf()))
 	val state = _state.asStateFlow()
 
@@ -21,7 +27,13 @@ class LogEditViewModel(private val service: LogService): ViewModel() {
 	val uiEvent = _uiEvent.receiveAsFlow()
 
 	fun new() {
-		_state.update { Log(GENERATE, currentDate(), listOf()) }
+		viewModelScope.launch {
+			val categories = categoryService.getAll().first()
+			val quantities = categories.map {
+				Quantity(GENERATE, it, null)
+			}
+			_state.update { Log(GENERATE, currentDate(), quantities) }
+		}
 	}
 
 	fun edit(id: Long) {

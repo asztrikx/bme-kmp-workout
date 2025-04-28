@@ -5,10 +5,16 @@ import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.text.KeyboardOptions
+import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.AssistWalker
 import androidx.compose.material3.Icon
 import androidx.compose.material3.OutlinedTextField
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
+import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.text.input.KeyboardType
@@ -20,15 +26,23 @@ fun LogEditQuantityItem(
 	quantity: Quantity,
 	onCountChange: (Float?) -> Unit,
 ) {
+	var text by remember { mutableStateOf(quantity.count.toString()) }
+
 	Row(Modifier.padding(10.dp), verticalAlignment = Alignment.CenterVertically) {
 		Icon(quantity.category.icon, null)
 		Spacer(Modifier.width(20.dp))
+
 		OutlinedTextField(
-			quantity.count?.toString() ?: "",
-			{ onCountChange(it.toFloatOrNull()) },
+			text,
+			{
+				text = it
+				it.toFloatOrNull()?.let {
+					onCountChange(it)
+				}
+			},
 			label = {
 				if (quantity.count == null) {
-					Text("""Quantity of unit "${quantity.category.unit}" """)
+					Text("${quantity.category.name} (${quantity.category.unit})")
 				} else {
 					Text(quantity.category.unit)
 				}
