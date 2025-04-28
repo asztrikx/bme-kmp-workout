@@ -5,8 +5,6 @@ import androidx.room.Entity
 import androidx.room.PrimaryKey
 import androidx.room.Relation
 import hu.asztrikx.workout.database.category.CategoryEntity
-import hu.asztrikx.workout.database.category.asModel
-import hu.asztrikx.workout.service.quantity.Quantity
 
 @Entity
 data class QuantityEntity(
@@ -27,10 +25,3 @@ data class QuantityWithCategory(
 	)
 	val categoryEntity: CategoryEntity,
 )
-
-fun QuantityWithCategory.asModel() =
-	Quantity(
-		quantityEntity.id,
-		categoryEntity.asModel(),
-		quantityEntity.count,
-	)

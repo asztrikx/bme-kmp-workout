@@ -1,9 +1,8 @@
 package hu.asztrikx.workout.service.settings
 
-import hu.asztrikx.workout.database.category.asModel
 import hu.asztrikx.workout.database.settings.SettingsRepository
-import hu.asztrikx.workout.database.settings.asEntity
 import hu.asztrikx.workout.presentation.shared.currentDate
+import hu.asztrikx.workout.service.category.asModel
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.first
 import kotlinx.coroutines.flow.map

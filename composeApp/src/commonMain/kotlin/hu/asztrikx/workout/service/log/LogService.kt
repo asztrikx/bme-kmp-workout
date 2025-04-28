@@ -4,7 +4,7 @@ import hu.asztrikx.workout.database.PLACEHOLDER
 import hu.asztrikx.workout.database.log.LogEntity
 import hu.asztrikx.workout.database.log.LogRepository
 import hu.asztrikx.workout.database.quantity.QuantityEntity
-import hu.asztrikx.workout.database.quantity.asModel
+import hu.asztrikx.workout.service.quantity.asModel
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.map
 

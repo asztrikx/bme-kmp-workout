@@ -6,8 +6,6 @@ import androidx.room.PrimaryKey
 import androidx.room.Relation
 import hu.asztrikx.workout.database.quantity.QuantityEntity
 import hu.asztrikx.workout.database.quantity.QuantityWithCategory
-import hu.asztrikx.workout.database.quantity.asModel
-import hu.asztrikx.workout.service.log.Log
 import kotlinx.datetime.LocalDate
 
 @Entity
@@ -27,15 +25,4 @@ data class LogWithQuantitiesAndCategories(
 		entityColumn = "logId",
 	)
 	val quantityWithCategories: List<QuantityWithCategory>,
-)
-
-fun LogWithQuantitiesAndCategories.asModel() = Log(
-	id = logEntity.id,
-	date = logEntity.date,
-	quantities = quantityWithCategories.map { it.asModel() }
-)
-
-fun Log.asEntity() = LogEntity(
-	id,
-	date,
 )

@@ -25,9 +25,3 @@ data class SettingsWithCategories(
 	)
 	val categories: List<CategoryEntity>
 )
-
-fun Settings.asEntity() =
-	SettingsEntity(
-		id = 1,
-		startDate,
-	)

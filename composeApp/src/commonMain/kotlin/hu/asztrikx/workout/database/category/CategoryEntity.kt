@@ -2,7 +2,6 @@ package hu.asztrikx.workout.database.category
 
 import androidx.room.Entity
 import androidx.room.PrimaryKey
-import hu.asztrikx.workout.service.category.Category
 
 @Entity
 data class CategoryEntity(
@@ -12,19 +11,4 @@ data class CategoryEntity(
 	val name: String,
 	val unit: String,
 	val settingsId: Int,
-)
-
-fun CategoryEntity.asModel() = Category(
-	id,
-	icon,
-	name,
-	unit,
-)
-
-fun Category.asEntity() = CategoryEntity(
-	id,
-	icon,
-	name,
-	unit,
-	1,
 )
