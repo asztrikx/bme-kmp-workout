@@ -29,7 +29,7 @@ fun LogEditQuantityItem(
 	var text by remember { mutableStateOf(quantity.count.toString()) }
 
 	Row(Modifier.padding(10.dp), verticalAlignment = Alignment.CenterVertically) {
-		Icon(quantity.category.icon, null)
+		Icon(quantity.category.icon.run { Icons.Default.AssistWalker }, null)
 		Spacer(Modifier.width(20.dp))
 
 		OutlinedTextField(

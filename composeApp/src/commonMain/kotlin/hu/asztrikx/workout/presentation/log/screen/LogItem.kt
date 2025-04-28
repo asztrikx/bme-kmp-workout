@@ -17,6 +17,7 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.width
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.ArrowDropDown
+import androidx.compose.material.icons.filled.AssistWalker
 import androidx.compose.material.icons.filled.Delete
 import androidx.compose.material.icons.filled.Edit
 import androidx.compose.material3.Card
@@ -64,7 +65,7 @@ fun LogItem(
 				) {
 					Row(verticalAlignment = Alignment.CenterVertically) {
 						log.quantities.forEach {
-							Icon(it.category.icon, null)
+							Icon(it.category.icon.run { Icons.Default.AssistWalker }, null)
 							Spacer(Modifier.width(10.dp))
 						}
 					}
