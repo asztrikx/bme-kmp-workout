@@ -24,10 +24,11 @@ import androidx.compose.ui.unit.dp
 import hu.asztrikx.workout.service.category.Category
 import hu.asztrikx.workout.presentation.categoryEdit.CategoryEditDialog
 import org.koin.compose.koinInject
+import org.koin.compose.viewmodel.koinViewModel
 
 @Composable
 fun SettingsScreenItem(category: Category) {
-	val viewModel: SettingsScreenItemViewModel = koinInject()
+	val viewModel: SettingsScreenItemViewModel = koinViewModel()
 	var categoryEditShow by remember { mutableStateOf(false) }
 
 	Card({ categoryEditShow = !categoryEditShow }) {

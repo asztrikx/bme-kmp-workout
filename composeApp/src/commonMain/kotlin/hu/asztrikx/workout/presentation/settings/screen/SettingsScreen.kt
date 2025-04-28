@@ -31,17 +31,19 @@ import androidx.compose.ui.unit.dp
 import hu.asztrikx.workout.presentation.settings.SettingsEvent
 import hu.asztrikx.workout.presentation.settings.SettingsState
 import hu.asztrikx.workout.presentation.categoryEdit.CategoryEditDialog
+import hu.asztrikx.workout.presentation.settings.SettingsViewModel
 import hu.asztrikx.workout.presentation.shared.BetterScaffold
 import hu.asztrikx.workout.presentation.shared.CustomDatePicker
 import hu.asztrikx.workout.presentation.shared.LoadingScreen
 import org.koin.compose.koinInject
+import org.koin.compose.viewmodel.koinViewModel
 
 @OptIn(ExperimentalMaterial3Api::class, ExperimentalLayoutApi::class)
 @Composable
 fun SettingsScreen(
 	onBackClick: () -> Unit,
 ) {
-	val viewModel: hu.asztrikx.workout.presentation.settings.SettingsViewModel = koinInject()
+	val viewModel: SettingsViewModel = koinViewModel()
 	val state = viewModel.state.collectAsState().value
 		// Smart cast to 'SettingsState. Result' is impossible, because 'state' is a property that has open or custom getter
 

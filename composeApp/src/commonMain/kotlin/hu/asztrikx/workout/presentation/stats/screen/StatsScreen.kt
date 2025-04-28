@@ -29,6 +29,7 @@ import hu.asztrikx.workout.presentation.stats.StatsEvent
 import hu.asztrikx.workout.presentation.stats.StatsState
 import hu.asztrikx.workout.presentation.stats.StatsViewModel
 import org.koin.compose.koinInject
+import org.koin.compose.viewmodel.koinViewModel
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
@@ -37,7 +38,7 @@ fun StatsScreen(
 	onLogsClick: () -> Unit,
 	onSettingsClick: () -> Unit,
 ) {
-	val viewModel: StatsViewModel = koinInject()
+	val viewModel: StatsViewModel = koinViewModel()
 	val state by viewModel.state.collectAsState()
 
 	BetterScaffold(

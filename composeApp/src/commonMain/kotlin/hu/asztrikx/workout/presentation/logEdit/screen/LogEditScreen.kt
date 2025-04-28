@@ -30,6 +30,7 @@ import hu.asztrikx.workout.presentation.logEdit.LogEditViewModel
 import hu.asztrikx.workout.presentation.shared.BetterScaffold
 import hu.asztrikx.workout.presentation.shared.CustomDatePicker
 import org.koin.compose.koinInject
+import org.koin.compose.viewmodel.koinViewModel
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
@@ -38,7 +39,7 @@ fun LogEditScreen(
 	id: Long?,
 	onBackClick: () -> Unit,
 ) {
-	val viewModel: LogEditViewModel = koinInject()
+	val viewModel: LogEditViewModel = koinViewModel()
 	val log by viewModel.state.collectAsState()
 
 	LaunchedEffect(Unit) {

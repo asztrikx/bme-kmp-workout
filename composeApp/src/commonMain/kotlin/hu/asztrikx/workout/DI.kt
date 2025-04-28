@@ -23,6 +23,7 @@ import hu.asztrikx.workout.presentation.settings.screen.SettingsScreenItemViewMo
 import hu.asztrikx.workout.presentation.stats.StatsViewModel
 import org.koin.core.context.startKoin
 import org.koin.core.module.Module
+import org.koin.core.module.dsl.viewModel
 import org.koin.dsl.KoinAppDeclaration
 import org.koin.dsl.module
 
@@ -48,12 +49,12 @@ val services = module {
 
 val viewModels = module {
 	includes(services)
-	single { CategoryEditViewModel(get()) }
-	single { LogViewModel(get()) }
-	single { LogEditViewModel(get(), get()) }
-	single { SettingsViewModel(get()) }
-	single { StatsViewModel(get()) }
-	single { SettingsScreenItemViewModel(get()) }
+	viewModel { CategoryEditViewModel(get()) }
+	viewModel { LogViewModel(get()) }
+	viewModel { LogEditViewModel(get(), get()) }
+	viewModel { SettingsViewModel(get()) }
+	viewModel { StatsViewModel(get()) }
+	viewModel { SettingsScreenItemViewModel(get()) }
 }
 
 fun initKoin(config: KoinAppDeclaration? = null) {

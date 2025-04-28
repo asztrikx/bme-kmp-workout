@@ -27,6 +27,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.unit.dp
 import org.koin.compose.koinInject
+import org.koin.compose.viewmodel.koinViewModel
 
 @OptIn(ExperimentalLayoutApi::class)
 @Composable
@@ -37,7 +38,7 @@ fun CategoryEditDialog(
 	onSave: () -> Unit,
 	id: Long?,
 ) {
-	val viewModel: CategoryEditViewModel = koinInject()
+	val viewModel: CategoryEditViewModel = koinViewModel()
 	val state by viewModel.state.collectAsState()
 
 	LaunchedEffect(Unit) {

@@ -28,6 +28,7 @@ import hu.asztrikx.workout.presentation.shared.BetterScaffold
 import hu.asztrikx.workout.presentation.shared.LoadingScreen
 import hu.asztrikx.workout.presentation.shared.SettingsIconButton
 import org.koin.compose.koinInject
+import org.koin.compose.viewmodel.koinViewModel
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
@@ -37,7 +38,7 @@ fun LogScreen(
 	onSettingsClick: () -> Unit,
 	onEditClick: (Long) -> Unit,
 ) {
-	val viewModel: LogViewModel = koinInject()
+	val viewModel: LogViewModel = koinViewModel()
 	val state = viewModel.state.collectAsState().value
 		// Smart cast to 'LogState. Result' is impossible, because 'state' is a property that has open or custom getter
 
