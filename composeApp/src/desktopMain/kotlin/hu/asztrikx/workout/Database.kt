@@ -6,7 +6,7 @@ import hu.asztrikx.workout.database.WorkoutDatabase
 import java.io.File
 
 fun getDatabaseBuilder(): RoomDatabase.Builder<WorkoutDatabase> {
-	val dbFile = File(System.getProperty("java.io.tmpdir"), "workout.db") // TODO tmp dir??
+	val dbFile = File(System.getProperty("java.io.tmpdir"), "workout.db")
 	return Room.databaseBuilder<WorkoutDatabase>(
 		name = dbFile.absolutePath,
 	)
