@@ -1,7 +1,7 @@
 package hu.asztrikx.workout.service.settings
 
 import hu.asztrikx.workout.database.settings.SettingsRepository
-import hu.asztrikx.workout.presentation.shared.currentDate
+import hu.asztrikx.workout.presentation.ui.shared.currentDate
 import hu.asztrikx.workout.service.category.asModel
 import jdk.internal.vm.vector.VectorSupport.insert
 import kotlinx.coroutines.flow.Flow
