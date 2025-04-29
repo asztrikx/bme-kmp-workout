@@ -1,6 +1,6 @@
 package hu.asztrikx.workout.service.stats
 
-import hu.asztrikx.workout.database.GENERATE
+import hu.asztrikx.workout.database.PLACEHOLDER
 import hu.asztrikx.workout.database.stats.StatsRepository
 import hu.asztrikx.workout.service.category.Category
 import kotlinx.coroutines.flow.map
@@ -14,7 +14,7 @@ class StatsService(private val repository: StatsRepository) {
 					val (categoryName, categoryUnit) = categoryNameAndUnit
 					Stats(
 						Category(
-							GENERATE,
+							PLACEHOLDER,
 							name = categoryName,
 							iconName = categoryIconName,
 							unit = categoryUnit
