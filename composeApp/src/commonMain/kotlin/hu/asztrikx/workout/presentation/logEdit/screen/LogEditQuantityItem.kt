@@ -26,7 +26,7 @@ fun LogEditQuantityItem(
 	quantity: Quantity,
 	onCountChange: (Float?) -> Unit,
 ) {
-	var text by remember { mutableStateOf(quantity.count.toString()) }
+	var text by remember { mutableStateOf(quantity.count?.toString() ?: "") }
 
 	Row(Modifier.padding(10.dp), verticalAlignment = Alignment.CenterVertically) {
 		Icon(quantity.category.icon.run { Icons.Default.AssistWalker }, null)
