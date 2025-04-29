@@ -38,6 +38,7 @@ fun LogEditQuantityItem(
 				// Only allow float characters
 				if (it.any { !it.isDigit() && it != '.' }) return@OutlinedTextField
 				if (it.toFloatOrNull() == null && it != "") return@OutlinedTextField
+					// e.g: 12.23.54.5
 
 				text = it
 				if (it.isBlank()) {
