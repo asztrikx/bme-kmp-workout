@@ -11,9 +11,7 @@ import kotlinx.coroutines.flow.update
 import kotlinx.coroutines.launch
 
 class SettingsViewModel(private val service: SettingsService): ViewModel() {
-	private val _state = MutableStateFlow<SettingsState>(
-		SettingsState.Loading
-	)
+	private val _state = MutableStateFlow<SettingsState>(SettingsState.Loading)
 	val state = _state.asStateFlow()
 
 	init {
