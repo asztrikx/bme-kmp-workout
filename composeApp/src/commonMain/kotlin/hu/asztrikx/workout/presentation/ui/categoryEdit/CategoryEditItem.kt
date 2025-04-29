@@ -24,7 +24,6 @@ import hu.asztrikx.workout.presentation.mapper.CategoryUI
 import hu.asztrikx.workout.presentation.ui.settings.screen.SettingsScreenItemViewModel
 import org.koin.compose.viewmodel.koinViewModel
 
-// TODO refactor to category
 @Composable
 fun CategoryEditItem(category: CategoryUI) {
 	val viewModel: SettingsScreenItemViewModel = koinViewModel()
