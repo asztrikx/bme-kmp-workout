@@ -5,10 +5,10 @@ import androidx.compose.runtime.Composable
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
-import hu.asztrikx.workout.presentation.logEdit.screen.LogEditScreen
-import hu.asztrikx.workout.presentation.log.screen.LogScreen
-import hu.asztrikx.workout.presentation.settings.screen.SettingsScreen
-import hu.asztrikx.workout.presentation.stats.screen.StatsScreen
+import hu.asztrikx.workout.presentation.ui.logEdit.screen.LogEditScreen
+import hu.asztrikx.workout.presentation.ui.log.screen.LogScreen
+import hu.asztrikx.workout.presentation.ui.settings.screen.SettingsScreen
+import hu.asztrikx.workout.presentation.ui.stats.screen.StatsScreen
 
 @Composable
 fun NavGraph(navHostController: NavHostController) {
