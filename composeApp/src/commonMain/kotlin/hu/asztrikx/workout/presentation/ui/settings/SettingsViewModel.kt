@@ -24,8 +24,8 @@ class SettingsViewModel(private val service: SettingsService): ViewModel() {
 		viewModelScope.launch {
 			try {
 				_state.update { SettingsState.Loading }
-				service.getAllWithCategories().collect { settings ->
-					_state.update { SettingsState.Result(settings.first().asUI())}
+				service.getWithCategories().collect { settings ->
+					_state.update { SettingsState.Result(settings!!.asUI())}
 				}
 			} catch (e: Exception) {
 				_state.update { SettingsState.Error(e) }
