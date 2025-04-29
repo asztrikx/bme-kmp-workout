@@ -16,10 +16,11 @@ fun CategoryEntity.asModel() = Category(
 	unit,
 )
 
-fun Category.asEntity() = CategoryEntity(
+fun Category.asEntity(isDeleted: Boolean) = CategoryEntity(
 	id,
 	iconName,
 	name,
 	unit,
 	1,
+	isDeleted,
 )

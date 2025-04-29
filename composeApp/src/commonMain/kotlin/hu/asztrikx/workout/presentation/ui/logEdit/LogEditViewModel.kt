@@ -31,7 +31,7 @@ class LogEditViewModel(
 
 	fun new() {
 		viewModelScope.launch {
-			val categories = categoryService.getAll().first()
+			val categories = categoryService.getAllNotDeleted().first()
 			val quantities = categories.map {
 				Quantity(GENERATE, it, null)
 			}

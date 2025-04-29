@@ -1,7 +1,6 @@
 package hu.asztrikx.workout.database.category
 
 import androidx.room.Dao
-import androidx.room.Delete
 import androidx.room.Insert
 import androidx.room.Query
 import androidx.room.Update
@@ -15,12 +14,12 @@ interface CategoryDao {
 	@Insert
 	suspend fun insert(categoryEntity: CategoryEntity)
 
-	@Query("SELECT * FROM CategoryEntity")
-	fun getAll(): Flow<List<CategoryEntity>>
+	@Query("SELECT * FROM CategoryEntity WHERE isDeleted = false")
+	fun getAllNotDeleted(): Flow<List<CategoryEntity>>
 
 	@Update
 	suspend fun update(item: CategoryEntity)
 
-	@Delete
-	suspend fun delete(item: CategoryEntity)
+	@Query("UPDATE CategoryEntity SET isDeleted = true WHERE id = :id")
+	suspend fun softDelete(id: Long)
 }

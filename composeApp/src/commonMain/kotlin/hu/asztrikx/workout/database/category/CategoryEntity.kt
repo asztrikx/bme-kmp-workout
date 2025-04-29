@@ -11,4 +11,5 @@ data class CategoryEntity(
 	val name: String,
 	val unit: String,
 	val settingsId: Int,
+	val isDeleted: Boolean,
 )

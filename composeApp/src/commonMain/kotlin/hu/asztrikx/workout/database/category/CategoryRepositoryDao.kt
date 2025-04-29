@@ -9,12 +9,12 @@ class CategoryRepositoryDao(private val dao: CategoryDao): CategoryRepository {
 	override suspend fun insert(categoryEntity: CategoryEntity) =
 		dao.insert(categoryEntity)
 
-	override fun getAll(): Flow<List<CategoryEntity>> =
-		dao.getAll()
+	override fun getAllNotDeleted(): Flow<List<CategoryEntity>> =
+		dao.getAllNotDeleted()
 
 	override suspend fun update(item: CategoryEntity) =
 		dao.update(item)
 
 	override suspend fun delete(item: CategoryEntity) =
-		dao.delete(item)
+		dao.softDelete(item.id)
 }
