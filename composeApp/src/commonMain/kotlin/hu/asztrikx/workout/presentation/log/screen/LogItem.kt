@@ -65,6 +65,7 @@ fun LogItem(
 				) {
 					Row(verticalAlignment = Alignment.CenterVertically) {
 						log.quantities.forEach {
+							if (it.count == null) return@forEach
 							Icon(it.category.icon.run { Icons.Default.AssistWalker }, null)
 							Spacer(Modifier.width(10.dp))
 						}

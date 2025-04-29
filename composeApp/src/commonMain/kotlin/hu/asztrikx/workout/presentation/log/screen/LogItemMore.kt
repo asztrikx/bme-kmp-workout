@@ -44,6 +44,7 @@ fun LogItemMore(log: Log, isExpanded: Boolean) {
 				horizontalArrangement = Arrangement.SpaceAround,
 			) {
 				log.quantities.forEach { quantity ->
+					if (quantity.count == null) return@forEach
 					Row(Modifier.padding(10.dp)) {
 						Icon(quantity.category.icon.run { Icons.Default.AssistWalker }, null)
 						Spacer(Modifier.width(10.dp))
