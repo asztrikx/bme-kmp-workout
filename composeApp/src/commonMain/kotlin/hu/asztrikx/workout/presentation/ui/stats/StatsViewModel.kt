@@ -30,7 +30,7 @@ class StatsViewModel(private val service: StatsService): ViewModel() {
 					}
 				}
 			} catch (e: Exception) {
-				_state.value = StatsState.Error(e)
+				_state.update { StatsState.Error(e) }
 			}
 		}
 	}

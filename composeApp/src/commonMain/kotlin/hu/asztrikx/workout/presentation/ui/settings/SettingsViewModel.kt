@@ -26,7 +26,7 @@ class SettingsViewModel(private val service: SettingsService): ViewModel() {
 					_state.update { SettingsState.Result(settings.first())}
 				}
 			} catch (e: Exception) {
-				_state.value = SettingsState.Error(e)
+				_state.update { SettingsState.Error(e) }
 			}
 		}
 	}
