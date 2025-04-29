@@ -30,7 +30,7 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
-import androidx.compose.runtime.remember
+import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
@@ -46,7 +46,8 @@ fun LogItem(
 	onDelete: () -> Unit,
 	colors: CardColors = CardDefaults.cardColors(),
 ) {
-	var expanded by remember { mutableStateOf(false) }
+	var expanded by rememberSaveable { mutableStateOf(false) }
+		// survive lazycolumn unloading
 	val angle by animateFloatAsState(if (expanded) 0f else -90f)
 
 	Card(Modifier.fillMaxWidth().clickable { expanded = !expanded }, colors = colors) {
