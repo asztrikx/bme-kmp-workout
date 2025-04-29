@@ -35,6 +35,10 @@ fun LogEditQuantityItem(
 		OutlinedTextField(
 			text,
 			{
+				// Only allow float characters
+				if (it.any { !it.isDigit() && it != '.' }) return@OutlinedTextField
+				if (it.toFloatOrNull() == null && it != "") return@OutlinedTextField
+
 				text = it
 				if (it.isBlank()) {
 					onCountChange(null)
