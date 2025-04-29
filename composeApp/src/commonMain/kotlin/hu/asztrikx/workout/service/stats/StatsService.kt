@@ -19,9 +19,11 @@ class StatsService(private val repository: StatsRepository) {
 							iconName = categoryIconName,
 							unit = categoryUnit
 						),
-						stats = items.map {
+						stats = items.filter {
+							it.count != null
+						}.map {
 							QuantityWithDate(
-								it.count,
+								it.count!!,
 								it.logDate
 							)
 						}

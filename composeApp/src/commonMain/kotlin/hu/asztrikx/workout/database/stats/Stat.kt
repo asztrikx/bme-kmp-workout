@@ -6,6 +6,6 @@ data class Stat(
     val categoryName: String,
     val categoryUnit: String,
     val categoryIconName: String,
-    val count: Float,
+    val count: Float?,
     val logDate: LocalDate
 )
