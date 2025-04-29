@@ -31,11 +31,11 @@ import androidx.compose.ui.unit.dp
 import hu.asztrikx.workout.presentation.ui.settings.SettingsEvent
 import hu.asztrikx.workout.presentation.ui.settings.SettingsState
 import hu.asztrikx.workout.presentation.ui.categoryEdit.CategoryEditDialog
+import hu.asztrikx.workout.presentation.ui.categoryEdit.CategoryEditItem
 import hu.asztrikx.workout.presentation.ui.settings.SettingsViewModel
 import hu.asztrikx.workout.presentation.ui.shared.BetterScaffold
 import hu.asztrikx.workout.presentation.ui.shared.CustomDatePicker
 import hu.asztrikx.workout.presentation.ui.shared.LoadingScreen
-import org.koin.compose.koinInject
 import org.koin.compose.viewmodel.koinViewModel
 
 @OptIn(ExperimentalMaterial3Api::class, ExperimentalLayoutApi::class)
@@ -103,7 +103,7 @@ fun SettingsScreen(
 						horizontalAlignment = Alignment.CenterHorizontally,
 					) {
 						items(state.settings.categories, key = { it.id }) { category ->
-							SettingsScreenItem(category)
+							CategoryEditItem(category)
 						}
 					}
 

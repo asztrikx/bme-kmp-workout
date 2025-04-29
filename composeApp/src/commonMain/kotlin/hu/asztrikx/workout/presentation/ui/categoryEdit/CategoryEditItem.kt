@@ -1,4 +1,4 @@
-package hu.asztrikx.workout.presentation.ui.settings.screen
+package hu.asztrikx.workout.presentation.ui.categoryEdit
 
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Row
@@ -7,7 +7,6 @@ import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.filled.AssistWalker
 import androidx.compose.material.icons.filled.Delete
 import androidx.compose.material3.Card
 import androidx.compose.material3.Icon
@@ -22,11 +21,12 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 import hu.asztrikx.workout.presentation.mapper.CategoryUI
-import hu.asztrikx.workout.presentation.ui.categoryEdit.CategoryEditDialog
+import hu.asztrikx.workout.presentation.ui.settings.screen.SettingsScreenItemViewModel
 import org.koin.compose.viewmodel.koinViewModel
 
+// TODO refactor to category
 @Composable
-fun SettingsScreenItem(category: CategoryUI) {
+fun CategoryEditItem(category: CategoryUI) {
 	val viewModel: SettingsScreenItemViewModel = koinViewModel()
 	var categoryEditShow by remember { mutableStateOf(false) }
 
