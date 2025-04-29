@@ -52,7 +52,7 @@ class LogEditViewModel(
 			}
 			is LogEditEvent.Category -> {
 				_state.update { it.copy(quantities = it.quantities.map { quantity ->
-					if (quantity.id == event.id) {
+					if (quantity.category.id == event.categoryId) { // TODO generated id
 						quantity.copy(count = event.count)
 					} else
 						quantity
