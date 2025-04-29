@@ -31,9 +31,6 @@ fun NavGraph(navHostController: NavHostController) {
 			LogEditScreen("Add", null, onBackClick)
 		}
 		composable(Screen.LogEdit.route) { navBackStackEntry ->
-			// TODO így lehet paramétert átadni screenek között HA a koin hozta létre
-			// koinInject(navHostController.getBackStackEntry(Screen.Log.route))
-
 			val id = navBackStackEntry.arguments?.getString("id")!!
 			LogEditScreen("Edit", id.toLong(), onBackClick)
 		}
