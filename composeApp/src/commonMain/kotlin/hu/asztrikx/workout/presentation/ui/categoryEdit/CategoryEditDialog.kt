@@ -26,7 +26,7 @@ import androidx.compose.runtime.getValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.unit.dp
-import org.koin.compose.koinInject
+import hu.asztrikx.workout.presentation.mapper.iconsMap
 import org.koin.compose.viewmodel.koinViewModel
 
 @OptIn(ExperimentalLayoutApi::class)
@@ -84,12 +84,10 @@ fun CategoryEditDialog(
 				Text("Icon", style = MaterialTheme.typography.labelMedium)
 
 				FlowRow(Modifier.fillMaxWidth(), horizontalArrangement = Arrangement.SpaceBetween) {
-					List(15) {
-						if (it % 2 == 0) Icons.Default.FitnessCenter else Icons.AutoMirrored.Filled.DirectionsRun
-					}.forEach { icon ->
-						val backgroundColor = if (state.icon == icon) Color.Blue.copy(alpha = 0.2f) else Color.Transparent
+					iconsMap.entries.forEach { (name, icon) ->
+						val backgroundColor = if (state.iconName == name) Color.Blue.copy(alpha = 0.2f) else Color.Transparent
 						IconButton(
-							{ viewModel.onEvent(CategoryEditEvent.Icon(icon)) },
+							{ viewModel.onEvent(CategoryEditEvent.IconName(icon, name)) },
 							modifier = Modifier.background(color = backgroundColor, shape = CircleShape)
 						) {
 							Icon(icon, null)

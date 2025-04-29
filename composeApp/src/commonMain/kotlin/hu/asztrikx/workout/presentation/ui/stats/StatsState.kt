@@ -1,13 +1,13 @@
 package hu.asztrikx.workout.presentation.ui.stats
 
-import hu.asztrikx.workout.service.stats.Stats
+import hu.asztrikx.workout.presentation.mapper.StatsUI
 import kotlinx.datetime.LocalDate
 
 sealed class StatsState {
 	data object Loading: StatsState()
 	data class Error(val error: Throwable): StatsState()
 	data class Result(
-		private val statsByCategory: List<Stats>,
+		private val statsByCategory: List<StatsUI>,
 		val startDate: LocalDate,
 	): StatsState() {
 		fun statsByCategory() =

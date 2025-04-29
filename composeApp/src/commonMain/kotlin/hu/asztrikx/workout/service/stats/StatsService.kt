@@ -8,14 +8,15 @@ import kotlinx.coroutines.flow.map
 class StatsService(private val repository: StatsRepository) {
 	fun getAll() =
 		repository.getAllFlattened().map { list ->
-			list.groupBy { it.categoryName to it.categoryUnit }
+			list.groupBy { it.categoryName to it.categoryUnit to it.categoryIconName }
 				.map { (category, items) ->
-					val (categoryName, categoryUnit) = category
+					val (categoryNameAndUnit, categoryIconName) = category
+					val (categoryName, categoryUnit) = categoryNameAndUnit
 					Stats(
 						Category(
 							GENERATE,
 							name = categoryName,
-							icon = "TODO",
+							iconName = categoryIconName,
 							unit = categoryUnit
 						),
 						stats = items.map {

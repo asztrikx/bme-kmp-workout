@@ -16,19 +16,17 @@ import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.shape.RoundedCornerShape
-import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.filled.AssistWalker
 import androidx.compose.material3.Card
 import androidx.compose.material3.Icon
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
-import hu.asztrikx.workout.service.log.Log
+import hu.asztrikx.workout.presentation.mapper.LogUI
 
 @OptIn(ExperimentalLayoutApi::class)
 @Composable
-fun LogItemMore(log: Log, isExpanded: Boolean) {
+fun LogItemMore(log: LogUI, isExpanded: Boolean) {
 	AnimatedVisibility(
 		isExpanded,
 		enter = slideInVertically() + expandVertically() + fadeIn(),
@@ -46,7 +44,7 @@ fun LogItemMore(log: Log, isExpanded: Boolean) {
 				log.quantities.forEach { quantity ->
 					if (quantity.count == null) return@forEach
 					Row(Modifier.padding(10.dp)) {
-						Icon(quantity.category.icon.run { Icons.Default.AssistWalker }, null)
+						Icon(quantity.category.icon, null)
 						Spacer(Modifier.width(10.dp))
 						Text("%.2f %s".format(quantity.count, quantity.category.unit))
 					}

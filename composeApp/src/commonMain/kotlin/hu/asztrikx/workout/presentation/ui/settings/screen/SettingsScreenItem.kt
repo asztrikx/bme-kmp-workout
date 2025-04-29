@@ -21,20 +21,19 @@ import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
-import hu.asztrikx.workout.service.category.Category
+import hu.asztrikx.workout.presentation.mapper.CategoryUI
 import hu.asztrikx.workout.presentation.ui.categoryEdit.CategoryEditDialog
-import org.koin.compose.koinInject
 import org.koin.compose.viewmodel.koinViewModel
 
 @Composable
-fun SettingsScreenItem(category: Category) {
+fun SettingsScreenItem(category: CategoryUI) {
 	val viewModel: SettingsScreenItemViewModel = koinViewModel()
 	var categoryEditShow by remember { mutableStateOf(false) }
 
 	Card({ categoryEditShow = !categoryEditShow }) {
 		Row(Modifier.fillMaxWidth(), verticalAlignment = Alignment.CenterVertically) {
 			Row(Modifier.weight(1f).padding(20.dp), horizontalArrangement = Arrangement.SpaceBetween) {
-				Icon(category.icon.run { Icons.Default.AssistWalker }, null)
+				Icon(category.icon, null)
 				Text(category.name)
 				Text(category.unit)
 			}

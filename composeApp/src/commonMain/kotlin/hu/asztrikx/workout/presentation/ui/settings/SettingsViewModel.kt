@@ -2,6 +2,8 @@ package hu.asztrikx.workout.presentation.ui.settings
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import hu.asztrikx.workout.presentation.mapper.asModel
+import hu.asztrikx.workout.presentation.mapper.asUI
 import hu.asztrikx.workout.service.settings.SettingsService
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.asStateFlow
@@ -23,7 +25,7 @@ class SettingsViewModel(private val service: SettingsService): ViewModel() {
 			try {
 				_state.update { SettingsState.Loading }
 				service.getAllWithCategories().collect { settings ->
-					_state.update { SettingsState.Result(settings.first())}
+					_state.update { SettingsState.Result(settings.first().asUI())}
 				}
 			} catch (e: Exception) {
 				_state.update { SettingsState.Error(e) }
@@ -35,7 +37,7 @@ class SettingsViewModel(private val service: SettingsService): ViewModel() {
 		val settings = (_state.value as SettingsState.Result).settings
 		when (event) {
 			is SettingsEvent.DateChange -> {
-				service.update(settings.copy(startDate = event.startDate))
+				service.update(settings.copy(startDate = event.startDate).asModel())
 			}
 		}
 	}

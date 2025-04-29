@@ -6,6 +6,9 @@ import androidx.compose.material.icons.filled.Wash
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import hu.asztrikx.workout.database.GENERATE
+import hu.asztrikx.workout.presentation.mapper.CategoryUI
+import hu.asztrikx.workout.presentation.mapper.asModel
+import hu.asztrikx.workout.presentation.mapper.asUI
 import hu.asztrikx.workout.service.category.CategoryService
 import kotlinx.coroutines.channels.Channel
 import kotlinx.coroutines.flow.MutableStateFlow
@@ -17,7 +20,7 @@ import kotlinx.coroutines.launch
 class CategoryEditViewModel(
 	private val service: CategoryService,
 ): ViewModel() {
-	private val _state = MutableStateFlow(CategoryUI(-1, Icons.Default.Wash, "", ""))
+	private val _state = MutableStateFlow(CategoryUI(-1, Icons.Default.Wash, "", "", ""))
 	val state = _state.asStateFlow()
 
 	private val _uiEvent = Channel<CategoryEditUIEvent>()
@@ -25,7 +28,7 @@ class CategoryEditViewModel(
 
 	fun new() {
 		_state.update {
-			CategoryUI(GENERATE, Icons.Default.FitnessCenter, "", "")
+			CategoryUI(GENERATE, Icons.Default.FitnessCenter, "FitnessCenter", "", "")
 		}
 	}
 
@@ -45,8 +48,8 @@ class CategoryEditViewModel(
 			is CategoryEditEvent.Unit -> {
 				_state.update { it.copy(unit = event.unit) }
 			}
-			is CategoryEditEvent.Icon -> {
-				_state.update { it.copy(icon = event.icon) }
+			is CategoryEditEvent.IconName -> {
+				_state.update { it.copy(icon = event.icon, iconName = event.name) }
 			}
 			is CategoryEditEvent.Save -> {
 				viewModelScope.launch {

@@ -36,12 +36,12 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.rotate
 import androidx.compose.ui.unit.dp
-import hu.asztrikx.workout.service.log.Log
+import hu.asztrikx.workout.presentation.mapper.LogUI
 import hu.asztrikx.workout.presentation.ui.shared.format
 
 @Composable
 fun LogItem(
-	log: Log,
+	log: LogUI,
 	onEdit: () -> Unit,
 	onDelete: () -> Unit,
 	colors: CardColors = CardDefaults.cardColors(),
@@ -66,7 +66,7 @@ fun LogItem(
 					Row(verticalAlignment = Alignment.CenterVertically) {
 						log.quantities.forEach {
 							if (it.count == null) return@forEach
-							Icon(it.category.icon.run { Icons.Default.AssistWalker }, null)
+							Icon(it.category.icon, null)
 							Spacer(Modifier.width(10.dp))
 						}
 					}

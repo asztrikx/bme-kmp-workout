@@ -3,6 +3,9 @@ package hu.asztrikx.workout.presentation.ui.logEdit
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import hu.asztrikx.workout.database.GENERATE
+import hu.asztrikx.workout.presentation.mapper.LogUI
+import hu.asztrikx.workout.presentation.mapper.asModel
+import hu.asztrikx.workout.presentation.mapper.asUI
 import hu.asztrikx.workout.service.category.CategoryService
 import hu.asztrikx.workout.service.log.LogService
 import hu.asztrikx.workout.service.log.Log
@@ -20,7 +23,7 @@ class LogEditViewModel(
 	private val service: LogService,
 	private val categoryService: CategoryService,
 ): ViewModel() {
-	private val _state = MutableStateFlow(Log(GENERATE, currentDate(), listOf()))
+	private val _state = MutableStateFlow(LogUI(GENERATE, currentDate(), listOf()))
 	val state = _state.asStateFlow()
 
 	private val _uiEvent = Channel<LogEditUIEvent>()
@@ -32,7 +35,7 @@ class LogEditViewModel(
 			val quantities = categories.map {
 				Quantity(GENERATE, it, null)
 			}
-			_state.update { Log(GENERATE, currentDate(), quantities) }
+			_state.update { Log(GENERATE, currentDate(), quantities).asUI() }
 		}
 	}
 
@@ -40,7 +43,7 @@ class LogEditViewModel(
 		viewModelScope.launch {
 			service.getAllWithQuantityAndCategory().collect { logs ->
 				val log = logs.find { it.id == id }!!
-				_state.update { log }
+				_state.update { log.asUI() }
 			}
 		}
 	}
@@ -62,9 +65,9 @@ class LogEditViewModel(
 				viewModelScope.launch {
 					_state.value.let {
 						if (it.id == GENERATE) {
-							service.insert(it)
+							service.insert(it.asModel())
 						} else {
-							service.update(it)
+							service.update(it.asModel())
 						}
 					}
 					_uiEvent.send(LogEditUIEvent.Success)

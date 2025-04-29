@@ -10,6 +10,7 @@ interface StatsDao {
         SELECT 
             c.name AS categoryName,
             c.unit AS categoryUnit,
+			c.iconName as categoryIconName,
             q.count AS count,
             l.date AS logDate
         FROM QuantityEntity q

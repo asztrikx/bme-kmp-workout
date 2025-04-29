@@ -8,8 +8,6 @@ import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.width
-import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.filled.AssistWalker
 import androidx.compose.material3.Icon
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
@@ -17,15 +15,15 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
-import hu.asztrikx.workout.service.category.Category
+import hu.asztrikx.workout.presentation.mapper.CategoryUI
 import hu.asztrikx.workout.presentation.ui.shared.format
 import hu.asztrikx.workout.service.stats.QuantityWithDate
 
 @Composable
-fun StatsItem(category: Category, quantityWithDates: List<QuantityWithDate>) {
+fun StatsItem(category: CategoryUI, quantityWithDates: List<QuantityWithDate>) {
 	Column {
 		Row(Modifier, verticalAlignment = Alignment.CenterVertically) {
-			Icon(category.icon.run { Icons.Default.AssistWalker }, null, modifier = Modifier.size(40.dp))
+			Icon(category.icon, null, modifier = Modifier.size(40.dp))
 			Spacer(Modifier.width(10.dp))
 			Text(category.name, style = MaterialTheme.typography.titleLarge)
 		}

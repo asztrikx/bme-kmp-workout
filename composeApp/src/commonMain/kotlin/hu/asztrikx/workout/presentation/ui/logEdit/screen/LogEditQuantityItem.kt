@@ -19,17 +19,17 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.unit.dp
-import hu.asztrikx.workout.service.quantity.Quantity
+import hu.asztrikx.workout.presentation.mapper.QuantityUI
 
 @Composable
 fun LogEditQuantityItem(
-	quantity: Quantity,
+	quantity: QuantityUI,
 	onCountChange: (Float?) -> Unit,
 ) {
 	var text by remember { mutableStateOf(quantity.count?.toString() ?: "") }
 
 	Row(Modifier.padding(10.dp), verticalAlignment = Alignment.CenterVertically) {
-		Icon(quantity.category.icon.run { Icons.Default.AssistWalker }, null)
+		Icon(quantity.category.icon, null)
 		Spacer(Modifier.width(20.dp))
 
 		OutlinedTextField(

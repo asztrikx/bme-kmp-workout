@@ -4,21 +4,21 @@ import hu.asztrikx.workout.database.category.CategoryEntity
 
 data class Category(
 	val id: Long,
-	val icon: String,
+	val iconName: String,
 	val name: String,
 	val unit: String,
 )
 
 fun CategoryEntity.asModel() = Category(
 	id,
-	icon,
+	iconName,
 	name,
 	unit,
 )
 
 fun Category.asEntity() = CategoryEntity(
 	id,
-	icon,
+	iconName,
 	name,
 	unit,
 	1,

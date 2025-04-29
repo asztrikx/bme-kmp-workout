@@ -2,6 +2,7 @@ package hu.asztrikx.workout.presentation.ui.stats
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import hu.asztrikx.workout.presentation.mapper.asUI
 import hu.asztrikx.workout.service.stats.StatsService
 import hu.asztrikx.workout.presentation.ui.shared.currentDate
 import kotlinx.coroutines.flow.MutableStateFlow
@@ -24,7 +25,7 @@ class StatsViewModel(private val service: StatsService): ViewModel() {
 				service.getAll().collect { statsByCategory ->
 					_state.update {
 						StatsState.Result(
-							statsByCategory,
+							statsByCategory.map { it.asUI() },
 							currentDate() // TODO from settings
 						)
 					}
