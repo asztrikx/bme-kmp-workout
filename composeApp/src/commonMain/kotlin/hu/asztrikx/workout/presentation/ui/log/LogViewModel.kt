@@ -26,7 +26,12 @@ class LogViewModel(
 			try {
 				_state.update { LogState.Loading }
 				service.getAllWithQuantityAndCategory().collect { logs ->
-					_state.update { LogState.Result(logs.map { it.asUI() }) }
+					_state.update {
+						LogState.Result(
+							logs.map { it.asUI() }
+								.sortedByDescending { it.date }
+						)
+					}
 				}
 			} catch (e: Exception) {
 				_state.update { LogState.Error(e) }
