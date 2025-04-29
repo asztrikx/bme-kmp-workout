@@ -94,7 +94,7 @@ fun LogEditScreen(
 			Spacer(Modifier.height(20.dp))
 
 			LazyColumn {
-				items(log.quantities, key = { it.id }) { quantity ->
+				items(log.quantities, /*key = { it.id }*/) { quantity ->
 					LogEditQuantityItem(quantity, { viewModel.onEvent(LogEditEvent.Category(it, quantity.id)) })
 				}
 			}
