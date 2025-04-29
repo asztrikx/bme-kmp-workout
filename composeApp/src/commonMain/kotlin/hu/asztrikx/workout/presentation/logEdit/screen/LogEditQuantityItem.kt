@@ -36,8 +36,12 @@ fun LogEditQuantityItem(
 			text,
 			{
 				text = it
-				it.toFloatOrNull()?.let {
-					onCountChange(it)
+				if (it.isBlank()) {
+					onCountChange(null)
+				} else {
+					it.toFloatOrNull()?.let {
+						onCountChange(it)
+					}
 				}
 			},
 			label = {
