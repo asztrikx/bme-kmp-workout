@@ -1,5 +1,6 @@
 package hu.asztrikx.workout.presentation.navigation
 
+import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
@@ -12,9 +13,9 @@ import hu.asztrikx.workout.presentation.stats.screen.StatsScreen
 @Composable
 fun NavGraph(navHostController: NavHostController) {
 	val onAddClick = { navHostController.navigate(Screen.LogAdd.route) }
-	val onStatsClick = { navHostController.navigate(Screen.Stats.route) }
+	val onStatsClick = { navHostController.navigateAfterPop(Screen.Stats, Screen.Log) }
 	val onSettingsClick = { navHostController.navigate(Screen.Settings.route) }
-	val onSLogsClick = { navHostController.navigate(Screen.Log.route) }
+	val onLogsClick = { navHostController.navigateAfterPop(Screen.Log, Screen.Stats) }
 	val onBackClick: () -> Unit = { navHostController.popBackStack() }
 
 	NavHost(navController = navHostController, startDestination = Screen.Log.route) {
@@ -39,7 +40,7 @@ fun NavGraph(navHostController: NavHostController) {
 		composable(Screen.Stats.route) {
 			StatsScreen(
 				onAddClick,
-				onSLogsClick,
+				onLogsClick,
 				onSettingsClick,
 			)
 		}
@@ -48,3 +49,13 @@ fun NavGraph(navHostController: NavHostController) {
 		}
 	}
 }
+
+fun NavHostController.navigateAfterPop(
+	toRoute: Screen,
+	fromRoute: Screen,
+) =
+	navigate(toRoute.route) {
+		popUpTo(fromRoute.route) {
+			inclusive = true
+		}
+	}
