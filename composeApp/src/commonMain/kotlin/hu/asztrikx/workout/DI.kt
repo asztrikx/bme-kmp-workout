@@ -53,13 +53,13 @@ val viewModels = module {
 	viewModel { LogViewModel(get()) }
 	viewModel { LogEditViewModel(get(), get()) }
 	viewModel { SettingsViewModel(get()) }
-	viewModel { StatsViewModel(get()) }
+	viewModel { StatsViewModel(get(), get()) }
 	viewModel { SettingsScreenItemViewModel(get()) }
 }
 
 fun initKoin(config: KoinAppDeclaration? = null) {
 	startKoin {
 		config?.invoke(this)
-		modules(viewModels)
+		modules(repositories, services, viewModels)
 	}
 }
