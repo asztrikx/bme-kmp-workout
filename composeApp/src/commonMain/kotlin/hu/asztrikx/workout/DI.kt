@@ -39,11 +39,11 @@ val repositories = module {
 }
 
 val services = module {
-	includes(repositories)
+	includes(repositories, platformModule())
 	single { CategoryService(get()) }
 	single { LogService(get()) }
 	//single { QuantityService(get<QuantityRepository>()) }
-	single { SettingsService(get()) }
+	single { SettingsService(get(), get()) }
 	single { StatsService(get()) }
 }
 
@@ -60,6 +60,6 @@ val viewModels = module {
 fun initKoin(config: KoinAppDeclaration? = null) {
 	startKoin {
 		config?.invoke(this)
-		modules(repositories, services, viewModels)
+		modules(platformModule(), repositories, services, viewModels)
 	}
 }

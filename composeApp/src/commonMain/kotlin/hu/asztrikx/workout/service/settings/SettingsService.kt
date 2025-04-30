@@ -6,7 +6,10 @@ import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.first
 import kotlinx.coroutines.flow.map
 
-class SettingsService(private val repository: SettingsRepository) {
+class SettingsService(
+	private val repository: SettingsRepository,
+	private val shareService: ShareService,
+) {
 	suspend fun insert(item: Settings) =
 		repository.insert(item.asEntity())
 
@@ -36,4 +39,10 @@ class SettingsService(private val repository: SettingsRepository) {
 			)
 		}
 	}
+
+	suspend fun export() = shareService.exportCsv("test")
+}
+
+expect class ShareService {
+	suspend fun exportCsv(text: String)
 }

@@ -39,4 +39,10 @@ class SettingsViewModel(private val service: SettingsService): ViewModel() {
 			}
 		}
 	}
+
+	fun export() {
+		viewModelScope.launch {
+			service.export()
+		}
+	}
 }

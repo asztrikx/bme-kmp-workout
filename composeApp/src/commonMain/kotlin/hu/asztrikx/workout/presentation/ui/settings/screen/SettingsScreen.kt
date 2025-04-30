@@ -73,7 +73,7 @@ fun SettingsScreen(
 
 					Text("Export data", style = MaterialTheme.typography.labelMedium)
 					Row(Modifier.fillMaxWidth().padding(20.dp, 0.dp), horizontalArrangement = Arrangement.Center) {
-						Button({ }) {
+						Button({ viewModel.export() }) {
 							Text("Export")
 						}
 					}
