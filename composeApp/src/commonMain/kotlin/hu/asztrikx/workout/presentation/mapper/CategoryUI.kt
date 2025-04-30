@@ -1,9 +1,15 @@
 package hu.asztrikx.workout.presentation.mapper
 
 import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.automirrored.filled.DirectionsBike
 import androidx.compose.material.icons.automirrored.filled.DirectionsRun
 import androidx.compose.material.icons.filled.AccessibilityNew
+import androidx.compose.material.icons.filled.DirectionsBike
 import androidx.compose.material.icons.filled.FitnessCenter
+import androidx.compose.material.icons.filled.Hiking
+import androidx.compose.material.icons.filled.PedalBike
+import androidx.compose.material.icons.filled.Pool
+import androidx.compose.material.icons.filled.Sailing
 import androidx.compose.material.icons.filled.SelfImprovement
 import androidx.compose.material.icons.filled.SportsBasketball
 import androidx.compose.material.icons.filled.SportsCricket
@@ -19,6 +25,7 @@ import androidx.compose.material.icons.filled.SportsScore
 import androidx.compose.material.icons.filled.SportsSoccer
 import androidx.compose.material.icons.filled.SportsTennis
 import androidx.compose.material.icons.filled.SportsVolleyball
+import androidx.compose.material.icons.filled.Timer
 import androidx.compose.ui.graphics.vector.ImageVector
 import hu.asztrikx.workout.service.category.Category
 
@@ -55,7 +62,6 @@ val iconsMap = mapOf(
 	"Filled_SportsKabaddi" to Icons.Filled.SportsKabaddi,
 	"Filled_SportsHandball" to Icons.Filled.SportsHandball,
 	"Filled_SportsMma" to Icons.Filled.SportsMma,
-	"Filled_SportsEsports" to Icons.Filled.SportsEsports,
 	"Filled_SportsSoccer" to Icons.Filled.SportsSoccer,
 	"Filled_SportsBasketball" to Icons.Filled.SportsBasketball,
 	"Filled_SportsTennis" to Icons.Filled.SportsTennis,
@@ -63,5 +69,8 @@ val iconsMap = mapOf(
 	"Filled_SportsGolf" to Icons.Filled.SportsGolf,
 	"Filled_SportsFootball" to Icons.Filled.SportsFootball,
 	"Filled_SportsVolleyball" to Icons.Filled.SportsVolleyball,
-	"Filled_AccessibilityNew" to Icons.Filled.AccessibilityNew,
+	"Timer" to Icons.Default.Timer,
+	"Filled_DirectionsBike" to Icons.AutoMirrored.Filled.DirectionsBike,
+	"Hiking" to Icons.Default.Hiking,
+	"Pool" to Icons.Default.Pool,
 )
