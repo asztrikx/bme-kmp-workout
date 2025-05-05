@@ -7,6 +7,7 @@ data class LogUI (
 	val id: Long,
 	val date: LocalDate,
 	val quantities: List<QuantityUI>,
+	val expanded: Boolean,
 )
 
 fun LogUI.asModel() = Log(
@@ -18,5 +19,6 @@ fun LogUI.asModel() = Log(
 fun Log.asUI() = LogUI(
 	id,
 	date,
-	quantities.map { it.asUI() }
+	quantities.map { it.asUI() },
+	false,
 )

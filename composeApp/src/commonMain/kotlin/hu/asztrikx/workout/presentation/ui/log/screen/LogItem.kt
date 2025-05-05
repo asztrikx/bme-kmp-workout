@@ -36,7 +36,9 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.rotate
 import androidx.compose.ui.unit.dp
 import hu.asztrikx.workout.presentation.mapper.LogUI
+import hu.asztrikx.workout.presentation.ui.log.LogViewModel
 import hu.asztrikx.workout.presentation.ui.shared.format
+import org.koin.compose.viewmodel.koinViewModel
 
 @Composable
 fun LogItem(
@@ -44,12 +46,12 @@ fun LogItem(
 	onEdit: () -> Unit,
 	onDelete: () -> Unit,
 	colors: CardColors = CardDefaults.cardColors(),
+	viewModel: LogViewModel = koinViewModel(),
 ) {
-	var expanded by rememberSaveable { mutableStateOf(false) }
-		// survive lazycolumn unloading
+	val expanded = log.expanded
 	val angle by animateFloatAsState(if (expanded) 0f else -90f)
 
-	Card(Modifier.fillMaxWidth().clickable { expanded = !expanded }, colors = colors) {
+	Card(Modifier.fillMaxWidth().clickable { viewModel.changeExpanded(log) }, colors = colors) {
 		Row(
 			modifier = Modifier.padding(20.dp, 10.dp).fillMaxWidth(),
 			horizontalArrangement = Arrangement.SpaceBetween,
@@ -87,7 +89,7 @@ fun LogItem(
 				}
 
 				IconButton(
-					onClick = { expanded = !expanded },
+					onClick = { viewModel.changeExpanded(log) },
 					Modifier.rotate(degrees = angle),
 				) {
 					Icon(Icons.Default.ArrowDropDown, null)

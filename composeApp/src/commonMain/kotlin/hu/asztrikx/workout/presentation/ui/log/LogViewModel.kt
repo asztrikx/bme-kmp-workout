@@ -51,4 +51,20 @@ class LogViewModel(
 			}
 		}
 	}
+
+	fun changeExpanded(log: LogUI) {
+		(_state.value as LogState.Result).let { stateValue ->
+			viewModelScope.launch {
+				_state.update { LogState.Result(
+					stateValue.logs.map {
+						if (it.id == log.id) {
+							it.copy(expanded = !it.expanded)
+						} else {
+							it
+						}
+					}
+				) }
+			}
+		}
+	}
 }

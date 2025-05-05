@@ -23,7 +23,7 @@ class LogEditViewModel(
 	private val service: LogService,
 	private val categoryService: CategoryService,
 ): ViewModel() {
-	private val _state = MutableStateFlow(LogUI(GENERATE, currentDate(), listOf()))
+	private val _state = MutableStateFlow(LogUI(GENERATE, currentDate(), listOf(), false))
 	val state = _state.asStateFlow()
 
 	private val _uiEvent = Channel<LogEditUIEvent>()
