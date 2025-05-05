@@ -42,7 +42,3 @@ class SettingsService(
 
 	suspend fun export() = shareService.exportCsv("test")
 }
-
-expect class ShareService {
-	suspend fun exportCsv(text: String)
-}
