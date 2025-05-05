@@ -18,7 +18,10 @@ fun NavGraph(navHostController: NavHostController) {
 	val onLogsClick = { navHostController.navigateAfterPop(Screen.Log, Screen.Stats) }
 	val onBackClick: () -> Unit = { navHostController.popBackStack() }
 
-	NavHost(navController = navHostController, startDestination = Screen.Log.route) {
+	NavHost(
+		navController = navHostController,
+		startDestination = Screen.Log.route,
+	) {
 		composable(Screen.Log.route) {
 			LogScreen(
 				onAddClick,
