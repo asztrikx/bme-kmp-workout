@@ -37,8 +37,8 @@ fun LogScreen(
 	onStatsClick: () -> Unit,
 	onSettingsClick: () -> Unit,
 	onEditClick: (Long) -> Unit,
+	viewModel: LogViewModel = koinViewModel(),
 ) {
-	val viewModel: LogViewModel = koinViewModel()
 	val state = viewModel.state.collectAsState().value
 		// Smart cast to 'LogState. Result' is impossible, because 'state' is a property that has open or custom getter
 

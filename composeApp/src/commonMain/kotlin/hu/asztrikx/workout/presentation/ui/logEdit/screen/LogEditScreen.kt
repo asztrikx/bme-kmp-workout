@@ -38,8 +38,8 @@ fun LogEditScreen(
 	text: String,
 	id: Long?,
 	onBackClick: () -> Unit,
+	viewModel: LogEditViewModel = koinViewModel(),
 ) {
-	val viewModel: LogEditViewModel = koinViewModel()
 	val log by viewModel.state.collectAsState()
 
 	LaunchedEffect(Unit) {

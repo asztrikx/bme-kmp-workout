@@ -37,8 +37,8 @@ fun StatsScreen(
 	onAddClick: () -> Unit,
 	onLogsClick: () -> Unit,
 	onSettingsClick: () -> Unit,
+	viewModel: StatsViewModel = koinViewModel(),
 ) {
-	val viewModel: StatsViewModel = koinViewModel()
 	val state by viewModel.state.collectAsState()
 
 	BetterScaffold(

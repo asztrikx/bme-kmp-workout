@@ -42,8 +42,8 @@ import org.koin.compose.viewmodel.koinViewModel
 @Composable
 fun SettingsScreen(
 	onBackClick: () -> Unit,
+	viewModel: SettingsViewModel = koinViewModel(),
 ) {
-	val viewModel: SettingsViewModel = koinViewModel()
 	val state = viewModel.state.collectAsState().value
 		// Smart cast to 'SettingsState. Result' is impossible, because 'state' is a property that has open or custom getter
 

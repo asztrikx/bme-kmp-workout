@@ -34,8 +34,8 @@ fun CategoryEditDialog(
 	onDismiss: () -> Unit,
 	onSave: () -> Unit,
 	id: Long?,
+	viewModel: CategoryEditViewModel = koinViewModel(),
 ) {
-	val viewModel: CategoryEditViewModel = koinViewModel()
 	val state by viewModel.state.collectAsState()
 
 	LaunchedEffect(Unit) {

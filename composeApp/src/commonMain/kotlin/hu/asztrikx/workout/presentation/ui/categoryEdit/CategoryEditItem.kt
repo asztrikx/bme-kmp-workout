@@ -25,8 +25,10 @@ import hu.asztrikx.workout.presentation.ui.settings.screen.SettingsScreenItemVie
 import org.koin.compose.viewmodel.koinViewModel
 
 @Composable
-fun CategoryEditItem(category: CategoryUI) {
-	val viewModel: SettingsScreenItemViewModel = koinViewModel()
+fun CategoryEditItem(
+	category: CategoryUI,
+	viewModel: SettingsScreenItemViewModel = koinViewModel(),
+) {
 	var categoryEditShow by remember { mutableStateOf(false) }
 
 	Card({ categoryEditShow = !categoryEditShow }) {
