@@ -57,6 +57,9 @@ kotlin {
             // Room, SQLite manager
             implementation(libs.room.runtime)
             implementation(libs.sqlite.bundled)
+            // Filepicker
+            implementation(libs.filekit.core)
+            implementation(libs.filekit.dialogs.compose)
         }
         desktopMain.dependencies {
             implementation(compose.desktop.currentOs)
