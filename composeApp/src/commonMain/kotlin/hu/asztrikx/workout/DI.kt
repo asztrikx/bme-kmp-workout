@@ -43,7 +43,7 @@ val services = module {
 	single { CategoryService(get()) }
 	single { LogService(get()) }
 	//single { QuantityService(get<QuantityRepository>()) }
-	single { SettingsService(get(), get()) }
+	single { SettingsService(get(), get(), get()) }
 	single { StatsService(get()) }
 }
 

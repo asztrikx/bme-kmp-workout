@@ -7,9 +7,9 @@ import java.io.File
 
 actual class ShareService(private val context: Context) {
 	actual suspend fun exportCsv(text: String) {
-		val fileName = "data.csv"
+		val fileName = "statistics.csv"
 		val file = File(context.cacheDir, fileName)
-		file.writeText("column1,column2\nvalue1,value2")
+		file.writeText(text)
 
 		val uri = FileProvider.getUriForFile(context, "${context.packageName}.fileprovider", file)
 
