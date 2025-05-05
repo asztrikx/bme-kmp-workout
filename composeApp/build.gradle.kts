@@ -7,8 +7,6 @@ plugins {
     alias(libs.plugins.androidApplication)
     alias(libs.plugins.composeMultiplatform)
     alias(libs.plugins.composeCompiler)
-    // https://medium.com/@kaito_and_droid/setting-up-jetpack-room-in-a-kotlin-multiplatform-project-a-step-by-step-guide-4d0d6c823619
-    // https://github.dev/android/kotlin-multiplatform-samples
     alias(libs.plugins.ksp)
     alias(libs.plugins.room)
 }
@@ -33,31 +31,32 @@ kotlin {
         commonMain.dependencies {
             implementation(compose.runtime)
             implementation(compose.foundation)
+            // Material
             implementation(compose.material3)
+            implementation(compose.materialIconsExtended)
             implementation(compose.ui)
             implementation(compose.components.resources)
             implementation(compose.components.uiToolingPreview)
             implementation(libs.androidx.lifecycle.viewmodel)
             implementation(libs.androidx.lifecycle.runtime.compose)
             // Navigation
-            implementation(libs.androidx.navigation.compose)
+            implementation(libs.navigation.compose)
             // Multiplatform androidx.lifecycle.viewmodel
-            implementation(libs.androidx.lifecycle.viewmodel.compose)
+            //implementation(libs.androidx.lifecycle.viewmodel.compose)
             // Multiplatform androidx.coroutines
-            implementation(libs.kotlinx.coroutines.core)
-            // Material Icons
-            implementation(libs.androidx.material.icons.extended)
+            //implementation(libs.kotlinx.coroutines.core)
             // Kotlin Extensions DateTime - LocalDate
             implementation(libs.kotlinx.datetime)
             // Koin
+            implementation(project.dependencies.platform(libs.koin.bom))
             implementation(libs.koin.core)
             implementation(libs.koin.compose)
             implementation(libs.koin.compose.viewmodel)
             // Chart
             implementation(libs.charts)
             // Room, SQLite manager
-            implementation(libs.androidx.room.runtime)
-            implementation(libs.androidx.sqlite.bundled)
+            implementation(libs.room.runtime)
+            implementation(libs.sqlite.bundled)
         }
         desktopMain.dependencies {
             implementation(compose.desktop.currentOs)
@@ -98,11 +97,10 @@ android {
 }
 
 dependencies {
-    implementation(libs.androidx.material3.android)
     debugImplementation(compose.uiTooling)
 
     // Room, SQLite manager
-    ksp(libs.androidx.room.compiler)
+    ksp(libs.room.compiler)
 }
 
 room {
