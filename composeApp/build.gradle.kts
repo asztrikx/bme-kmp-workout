@@ -29,9 +29,6 @@ kotlin {
         androidMain.dependencies {
             implementation(compose.preview)
             implementation(libs.androidx.activity.compose)
-            // Koin
-            implementation(libs.koin.android)
-            implementation(libs.koin.androidx.compose)
         }
         commonMain.dependencies {
             implementation(compose.runtime)
@@ -53,15 +50,13 @@ kotlin {
             // Kotlin Extensions DateTime - LocalDate
             implementation(libs.kotlinx.datetime)
             // Koin
-            api(libs.koin.core)
+            implementation(libs.koin.core)
             implementation(libs.koin.compose)
             implementation(libs.koin.compose.viewmodel)
             // Chart
             implementation(libs.charts)
             // Room, SQLite manager
             implementation(libs.androidx.room.runtime)
-            implementation(libs.androidx.room.ktx)
-            implementation(libs.androidx.room.gradle.plugin)
             implementation(libs.androidx.sqlite.bundled)
         }
         desktopMain.dependencies {
@@ -107,9 +102,7 @@ dependencies {
     debugImplementation(compose.uiTooling)
 
     // Room, SQLite manager
-    add("kspAndroid", libs.androidx.room.compiler)
-    add("kspDesktop", libs.androidx.room.compiler)
-    //ksp(libs.androidx.room.compiler)
+    ksp(libs.androidx.room.compiler)
 }
 
 room {
