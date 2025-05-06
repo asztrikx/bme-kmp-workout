@@ -4,10 +4,12 @@ import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
+import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.width
+import androidx.compose.foundation.layout.widthIn
 import androidx.compose.material3.Icon
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
@@ -29,8 +31,10 @@ fun StatsItem(category: CategoryUI, quantityWithDates: List<QuantityWithDate>) {
 		}
 		Spacer(Modifier.height(10.dp))
 		if (quantityWithDates.size >= 2) {
-			Box(Modifier.padding(0.dp, 0.dp, 20.dp, 0.dp)) {
-				Chart(category, quantityWithDates)
+			Box(Modifier.padding(0.dp, 0.dp, 20.dp, 0.dp).fillMaxWidth(), contentAlignment = Alignment.Center) {
+				Box(Modifier.widthIn(max = 400.dp)) {
+					Chart(category, quantityWithDates)
+				}
 			}
 		} else if (quantityWithDates.size == 1) {
 			Text("${quantityWithDates.first().date.format()} ${quantityWithDates.first().count} ${category.unit}")
