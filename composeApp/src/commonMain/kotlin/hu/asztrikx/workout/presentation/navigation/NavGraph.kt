@@ -1,6 +1,5 @@
 package hu.asztrikx.workout.presentation.navigation
 
-import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
@@ -57,5 +56,7 @@ fun NavHostController.navigateAfterPop(
 	navigate(toRoute.route) {
 		popUpTo(fromRoute.route) {
 			inclusive = true
+			saveState = true
 		}
+		restoreState = true
 	}
