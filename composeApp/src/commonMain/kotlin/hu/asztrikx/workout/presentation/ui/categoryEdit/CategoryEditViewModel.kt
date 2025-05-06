@@ -28,7 +28,7 @@ class CategoryEditViewModel(
 
 	fun new() {
 		_state.update {
-			CategoryUI(GENERATE, Icons.Default.FitnessCenter, "FitnessCenter", "", "")
+			CategoryUI(GENERATE, Icons.Default.FitnessCenter, Icons.Default.FitnessCenter.name, "", "")
 		}
 	}
 
