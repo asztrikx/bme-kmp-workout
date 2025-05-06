@@ -25,6 +25,7 @@ import androidx.compose.ui.unit.dp
 import hu.asztrikx.workout.presentation.ui.log.LogState
 import hu.asztrikx.workout.presentation.ui.log.LogViewModel
 import hu.asztrikx.workout.presentation.ui.shared.BetterScaffold
+import hu.asztrikx.workout.presentation.ui.shared.ErrorScreen
 import hu.asztrikx.workout.presentation.ui.shared.LoadingScreen
 import hu.asztrikx.workout.presentation.ui.shared.SettingsIconButton
 import org.koin.compose.koinInject
