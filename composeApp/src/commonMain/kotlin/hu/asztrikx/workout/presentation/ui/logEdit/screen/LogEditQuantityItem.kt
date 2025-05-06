@@ -48,11 +48,7 @@ fun LogEditQuantityItem(
 				}
 			},
 			label = {
-				if (quantity.count == null) {
-					Text("${quantity.category.name} (${quantity.category.unit})")
-				} else {
-					Text(quantity.category.unit)
-				}
+				Text("${quantity.category.name} (${quantity.category.unit})")
 			},
 			keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Number),
 		)
