@@ -51,7 +51,10 @@ fun LogItem(
 	val expanded = log.expanded
 	val angle by animateFloatAsState(if (expanded) 0f else -90f)
 
-	Card(Modifier.fillMaxWidth().clickable { viewModel.changeExpanded(log) }, colors = colors) {
+	Card(
+		onClick = { viewModel.changeExpanded(log) },
+		colors = colors,
+	) {
 		Row(
 			modifier = Modifier.padding(20.dp, 10.dp).fillMaxWidth(),
 			horizontalArrangement = Arrangement.SpaceBetween,
