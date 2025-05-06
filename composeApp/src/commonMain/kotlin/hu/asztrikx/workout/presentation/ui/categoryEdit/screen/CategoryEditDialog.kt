@@ -1,4 +1,4 @@
-package hu.asztrikx.workout.presentation.ui.categoryEdit
+package hu.asztrikx.workout.presentation.ui.categoryEdit.screen
 
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
@@ -24,6 +24,9 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.unit.dp
 import hu.asztrikx.workout.presentation.mapper.iconsMap
+import hu.asztrikx.workout.presentation.ui.categoryEdit.CategoryEditEvent
+import hu.asztrikx.workout.presentation.ui.categoryEdit.CategoryEditUIEvent
+import hu.asztrikx.workout.presentation.ui.categoryEdit.CategoryEditViewModel
 import org.koin.compose.viewmodel.koinViewModel
 
 @OptIn(ExperimentalLayoutApi::class)

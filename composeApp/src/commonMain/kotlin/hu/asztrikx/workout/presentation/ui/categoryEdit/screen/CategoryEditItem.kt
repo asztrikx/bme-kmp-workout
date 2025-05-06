@@ -1,4 +1,4 @@
-package hu.asztrikx.workout.presentation.ui.categoryEdit
+package hu.asztrikx.workout.presentation.ui.categoryEdit.screen
 
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Row
