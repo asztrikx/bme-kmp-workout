@@ -30,11 +30,12 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 import hu.asztrikx.workout.presentation.ui.settings.SettingsEvent
 import hu.asztrikx.workout.presentation.ui.settings.SettingsState
-import hu.asztrikx.workout.presentation.ui.categoryEdit.CategoryEditDialog
-import hu.asztrikx.workout.presentation.ui.categoryEdit.CategoryEditItem
+import hu.asztrikx.workout.presentation.ui.categoryEdit.screen.CategoryEditDialog
+import hu.asztrikx.workout.presentation.ui.categoryEdit.screen.CategoryEditItem
 import hu.asztrikx.workout.presentation.ui.settings.SettingsViewModel
 import hu.asztrikx.workout.presentation.ui.shared.BetterScaffold
 import hu.asztrikx.workout.presentation.ui.shared.CustomDatePicker
+import hu.asztrikx.workout.presentation.ui.shared.ErrorScreen
 import hu.asztrikx.workout.presentation.ui.shared.LoadingScreen
 import org.koin.compose.viewmodel.koinViewModel
 
@@ -113,7 +114,7 @@ fun SettingsScreen(
 				LoadingScreen()
 			}
 			is SettingsState.Error -> {
-				Text(state.error.toString())
+				ErrorScreen(state.error.toString())
 			}
 		}
 	}

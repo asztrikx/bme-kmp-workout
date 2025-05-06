@@ -23,6 +23,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 import hu.asztrikx.workout.presentation.ui.shared.BetterScaffold
 import hu.asztrikx.workout.presentation.ui.shared.CustomDatePicker
+import hu.asztrikx.workout.presentation.ui.shared.ErrorScreen
 import hu.asztrikx.workout.presentation.ui.shared.LoadingScreen
 import hu.asztrikx.workout.presentation.ui.shared.SettingsIconButton
 import hu.asztrikx.workout.presentation.ui.stats.StatsEvent
@@ -84,7 +85,7 @@ fun StatsScreen(
 				LoadingScreen()
 			}
 			is StatsState.Error -> {
-				Text("error")
+				ErrorScreen(state.error.toString())
 			}
 		}
 	}

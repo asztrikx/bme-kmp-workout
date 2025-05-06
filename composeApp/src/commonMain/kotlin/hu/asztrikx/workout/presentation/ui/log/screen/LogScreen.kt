@@ -87,7 +87,7 @@ fun LogScreen(
 				LoadingScreen()
 			}
 			is LogState.Error -> {
-				Text(state.error.toString())
+				ErrorScreen(state.error.toString())
 			}
 		}
 	}
