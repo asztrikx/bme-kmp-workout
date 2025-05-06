@@ -2,7 +2,8 @@ package hu.asztrikx.workout.database.stats
 
 import kotlinx.datetime.LocalDate
 
-data class Stat(
+// Not stored
+data class StatEntity(
     val categoryName: String,
     val categoryUnit: String,
     val categoryIconName: String,

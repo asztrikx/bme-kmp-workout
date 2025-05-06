@@ -18,5 +18,5 @@ interface StatsDao {
         INNER JOIN LogEntity l ON q.logId = l.id
         ORDER BY c.name, l.date
     """)
-	fun getFlattened(): Flow<List<Stat>>
+	fun getFlattened(): Flow<List<StatEntity>>
 }
