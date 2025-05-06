@@ -20,7 +20,7 @@ data class LogWithQuantitiesAndCategories(
 	val logEntity: LogEntity,
 
 	@Relation(
-		entity = QuantityEntity::class, //??
+		entity = QuantityEntity::class, // Relation is also a relation class
 		parentColumn = "id",
 		entityColumn = "logId",
 	)
