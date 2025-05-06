@@ -8,4 +8,4 @@ import org.koin.dsl.module
 actual fun platformModule() = module {
 	single<WorkoutDatabase> { getRoomDatabase(getDatabaseBuilder()) }
 	single { ShareService() }
-}
+} // TODO rename to DI
