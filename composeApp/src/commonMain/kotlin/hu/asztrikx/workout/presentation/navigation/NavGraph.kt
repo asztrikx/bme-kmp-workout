@@ -8,6 +8,10 @@ import hu.asztrikx.workout.presentation.ui.logEdit.screen.LogEditScreen
 import hu.asztrikx.workout.presentation.ui.log.screen.LogScreen
 import hu.asztrikx.workout.presentation.ui.settings.screen.SettingsScreen
 import hu.asztrikx.workout.presentation.ui.stats.screen.StatsScreen
+import org.jetbrains.compose.resources.stringResource
+import workout.composeapp.generated.resources.Res
+import workout.composeapp.generated.resources.add
+import workout.composeapp.generated.resources.edit
 
 @Composable
 fun NavGraph(navHostController: NavHostController) {
@@ -30,11 +34,11 @@ fun NavGraph(navHostController: NavHostController) {
 			)
 		}
 		composable(Screen.LogAdd.route) {
-			LogEditScreen("Add", null, onBackClick)
+			LogEditScreen(stringResource(Res.string.add), null, onBackClick)
 		}
 		composable(Screen.LogEdit.route) { navBackStackEntry ->
 			val id = navBackStackEntry.arguments?.getString("id")!!
-			LogEditScreen("Edit", id.toLong(), onBackClick)
+			LogEditScreen(stringResource(Res.string.edit), id.toLong(), onBackClick)
 		}
 		composable(Screen.Stats.route) {
 			StatsScreen(

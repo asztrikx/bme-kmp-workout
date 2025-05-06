@@ -28,8 +28,11 @@ import hu.asztrikx.workout.presentation.ui.shared.BetterScaffold
 import hu.asztrikx.workout.presentation.ui.shared.ErrorScreen
 import hu.asztrikx.workout.presentation.ui.shared.LoadingScreen
 import hu.asztrikx.workout.presentation.ui.shared.SettingsIconButton
+import org.jetbrains.compose.resources.stringResource
 import org.koin.compose.koinInject
 import org.koin.compose.viewmodel.koinViewModel
+import workout.composeapp.generated.resources.Res
+import workout.composeapp.generated.resources.log
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
@@ -46,7 +49,7 @@ fun LogScreen(
 	BetterScaffold(
 		topBar = {
 			TopAppBar(
-				title = { Text("Log") },
+				title = { Text(stringResource(Res.string.log)) },
 				actions = { SettingsIconButton(onSettingsClick) },
 			)
 		},

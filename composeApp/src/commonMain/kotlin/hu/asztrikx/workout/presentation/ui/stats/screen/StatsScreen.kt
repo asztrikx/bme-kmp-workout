@@ -29,8 +29,12 @@ import hu.asztrikx.workout.presentation.ui.shared.SettingsIconButton
 import hu.asztrikx.workout.presentation.ui.stats.StatsEvent
 import hu.asztrikx.workout.presentation.ui.stats.StatsState
 import hu.asztrikx.workout.presentation.ui.stats.StatsViewModel
+import org.jetbrains.compose.resources.stringResource
 import org.koin.compose.koinInject
 import org.koin.compose.viewmodel.koinViewModel
+import workout.composeapp.generated.resources.Res
+import workout.composeapp.generated.resources.startOfRange
+import workout.composeapp.generated.resources.stats
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
@@ -45,7 +49,7 @@ fun StatsScreen(
 	BetterScaffold(
 		topBar = {
 			TopAppBar(
-				title = { Text("Stats") },
+				title = { Text(stringResource(Res.string.stats)) },
 				actions = { SettingsIconButton(onSettingsClick) },
 			)
 		 },
@@ -70,7 +74,7 @@ fun StatsScreen(
 					CustomDatePicker(
 						state.startDate,
 						{ viewModel.onEvent(StatsEvent.StartDate(it)) },
-						{ Text("Start of range") }
+						{ Text(stringResource(Res.string.startOfRange)) }
 					)
 
 					LazyColumn(Modifier.fillMaxSize()) {

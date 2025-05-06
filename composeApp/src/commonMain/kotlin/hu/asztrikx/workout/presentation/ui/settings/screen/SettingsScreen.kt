@@ -37,7 +37,17 @@ import hu.asztrikx.workout.presentation.ui.shared.BetterScaffold
 import hu.asztrikx.workout.presentation.ui.shared.CustomDatePicker
 import hu.asztrikx.workout.presentation.ui.shared.ErrorScreen
 import hu.asztrikx.workout.presentation.ui.shared.LoadingScreen
+import org.jetbrains.compose.resources.stringResource
 import org.koin.compose.viewmodel.koinViewModel
+import workout.composeapp.generated.resources.Res
+import workout.composeapp.generated.resources.add
+import workout.composeapp.generated.resources.addCategory
+import workout.composeapp.generated.resources.categoriesOfWorkout
+import workout.composeapp.generated.resources.createNew
+import workout.composeapp.generated.resources.export
+import workout.composeapp.generated.resources.exportData
+import workout.composeapp.generated.resources.settings
+import workout.composeapp.generated.resources.startOfPlotRange
 
 @OptIn(ExperimentalMaterial3Api::class, ExperimentalLayoutApi::class)
 @Composable
@@ -51,7 +61,7 @@ fun SettingsScreen(
 	BetterScaffold(
 		topBar = {
 			TopAppBar(
-				title = { Text("Settings") },
+				title = { Text(stringResource(Res.string.settings)) },
 				navigationIcon = {
 					IconButton(onBackClick) {
 						Icon(Icons.AutoMirrored.Filled.ArrowBack, null)
@@ -63,7 +73,7 @@ fun SettingsScreen(
 		when (state) {
 			is SettingsState.Result -> {
 				Column(Modifier.padding(20.dp)) {
-					Text("Start of plot range", style = MaterialTheme.typography.labelMedium)
+					Text(stringResource(Res.string.startOfPlotRange), style = MaterialTheme.typography.labelMedium)
 					CustomDatePicker(
 						state.settings.startDate,
 						{ viewModel.onEvent(SettingsEvent.DateChange(it)) },
@@ -72,27 +82,27 @@ fun SettingsScreen(
 
 					Spacer(Modifier.height(30.dp))
 
-					Text("Export data", style = MaterialTheme.typography.labelMedium)
+					Text(stringResource(Res.string.exportData), style = MaterialTheme.typography.labelMedium)
 					Row(Modifier.fillMaxWidth().padding(20.dp, 0.dp), horizontalArrangement = Arrangement.Center) {
 						Button({ viewModel.export() }) {
-							Text("Export")
+							Text(stringResource(Res.string.export))
 						}
 					}
 
 					Spacer(Modifier.height(30.dp))
 
-					Text("Categories of workout", style = MaterialTheme.typography.labelMedium)
+					Text(stringResource(Res.string.categoriesOfWorkout), style = MaterialTheme.typography.labelMedium)
 
 					var categoryAddShow by remember { mutableStateOf(false) }
 					Row(Modifier.fillMaxWidth().padding(0.dp, 20.dp), horizontalArrangement = Arrangement.Center) {
 						Button({ categoryAddShow = true }) {
-							Text("Create new")
+							Text(stringResource(Res.string.createNew))
 						}
 					}
 					if (categoryAddShow) {
 						CategoryEditDialog(
-							"Add category",
-							"Add",
+							stringResource(Res.string.addCategory),
+							stringResource(Res.string.add),
 							{ categoryAddShow = !categoryAddShow },
 							{ categoryAddShow = !categoryAddShow },
 							null,

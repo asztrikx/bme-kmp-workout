@@ -27,7 +27,13 @@ import hu.asztrikx.workout.presentation.mapper.iconsMap
 import hu.asztrikx.workout.presentation.ui.categoryEdit.CategoryEditEvent
 import hu.asztrikx.workout.presentation.ui.categoryEdit.CategoryEditUIEvent
 import hu.asztrikx.workout.presentation.ui.categoryEdit.CategoryEditViewModel
+import org.jetbrains.compose.resources.stringResource
 import org.koin.compose.viewmodel.koinViewModel
+import workout.composeapp.generated.resources.Res
+import workout.composeapp.generated.resources.cancel
+import workout.composeapp.generated.resources.icon
+import workout.composeapp.generated.resources.name
+import workout.composeapp.generated.resources.unit
 
 @OptIn(ExperimentalLayoutApi::class)
 @Composable
@@ -65,7 +71,7 @@ fun CategoryEditDialog(
 		},
 		text = {
 			Column {
-				Text("Name", style = MaterialTheme.typography.labelMedium)
+				Text(stringResource(Res.string.name), style = MaterialTheme.typography.labelMedium)
 				OutlinedTextField(
 					state.name,
 					{ viewModel.onEvent(CategoryEditEvent.Name(it)) },
@@ -73,7 +79,7 @@ fun CategoryEditDialog(
 
 				Spacer(Modifier.height(20.dp))
 
-				Text("Unit", style = MaterialTheme.typography.labelMedium)
+				Text(stringResource(Res.string.unit), style = MaterialTheme.typography.labelMedium)
 				OutlinedTextField(
 					state.unit,
 					{ viewModel.onEvent(CategoryEditEvent.Unit(it)) },
@@ -81,7 +87,7 @@ fun CategoryEditDialog(
 
 				Spacer(Modifier.height(20.dp))
 
-				Text("Icon", style = MaterialTheme.typography.labelMedium)
+				Text(stringResource(Res.string.icon), style = MaterialTheme.typography.labelMedium)
 
 				FlowRow(Modifier.fillMaxWidth(), horizontalArrangement = Arrangement.SpaceBetween) {
 					iconsMap.entries.forEach { (name, icon) ->
@@ -108,7 +114,7 @@ fun CategoryEditDialog(
 		},
 		dismissButton = {
 			TextButton(onDismiss) {
-				Text("Cancel")
+				Text(stringResource(Res.string.cancel))
 			}
 		}
 	)

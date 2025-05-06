@@ -29,8 +29,11 @@ import hu.asztrikx.workout.presentation.ui.logEdit.LogEditUIEvent
 import hu.asztrikx.workout.presentation.ui.logEdit.LogEditViewModel
 import hu.asztrikx.workout.presentation.ui.shared.BetterScaffold
 import hu.asztrikx.workout.presentation.ui.shared.CustomDatePicker
+import org.jetbrains.compose.resources.stringResource
 import org.koin.compose.koinInject
 import org.koin.compose.viewmodel.koinViewModel
+import workout.composeapp.generated.resources.Res
+import workout.composeapp.generated.resources.dateOfWorkout
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
@@ -88,7 +91,7 @@ fun LogEditScreen(
 			CustomDatePicker(
 				log.date,
 				{ viewModel.onEvent(LogEditEvent.Date(it)) },
-				{ Text("Date of workout") }
+				{ Text(stringResource(Res.string.dateOfWorkout)) }
 			)
 
 			Spacer(Modifier.height(20.dp))
