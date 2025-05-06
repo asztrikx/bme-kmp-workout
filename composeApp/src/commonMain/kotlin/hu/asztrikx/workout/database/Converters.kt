@@ -12,15 +12,5 @@ object Converters {
 	fun asLocalDate(string: String) =
 		LocalDate.parse(string)
 
-	/*
-	// KSP tries to use these as Converters.asString()
-	@TypeConverter
-	fun LocalDate.asString(): String =
-		toString()
-
-	@TypeConverter
-	fun String.asLocalDate(): LocalDate =
-		LocalDate.parse(this)
-
-	*/
+	// From extension functions KSP generates Converters.foo()
 }
