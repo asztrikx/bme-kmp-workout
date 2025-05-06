@@ -22,7 +22,7 @@ import hu.asztrikx.workout.service.stats.QuantityWithDate
 @Composable
 fun StatsItem(category: CategoryUI, quantityWithDates: List<QuantityWithDate>) {
 	Column {
-		Row(Modifier, verticalAlignment = Alignment.CenterVertically) {
+		Row(verticalAlignment = Alignment.CenterVertically) {
 			Icon(category.icon, null, modifier = Modifier.size(40.dp))
 			Spacer(Modifier.width(10.dp))
 			Text(category.name, style = MaterialTheme.typography.titleLarge)
