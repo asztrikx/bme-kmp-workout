@@ -9,6 +9,7 @@ import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.itemsIndexed
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Add
+import androidx.compose.material.icons.filled.Settings
 import androidx.compose.material.icons.filled.Timeline
 import androidx.compose.material3.CardDefaults
 import androidx.compose.material3.ExperimentalMaterial3Api
@@ -50,7 +51,6 @@ fun LogScreen(
 		topBar = {
 			TopAppBar(
 				title = { Text(stringResource(Res.string.log)) },
-				actions = { SettingsIconButton(onSettingsClick) },
 			)
 		},
 		floatingActionButton = {
@@ -61,6 +61,10 @@ fun LogScreen(
 				Spacer(Modifier.height(10.dp))
 				FloatingActionButton(onStatsClick) {
 					Icon(Icons.Filled.Timeline, null)
+				}
+				Spacer(Modifier.height(10.dp))
+				FloatingActionButton(onSettingsClick) {
+					Icon(Icons.Default.Settings, null)
 				}
 			}
 		},
