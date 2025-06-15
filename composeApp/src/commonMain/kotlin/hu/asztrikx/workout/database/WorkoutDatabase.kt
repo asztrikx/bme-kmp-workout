@@ -24,7 +24,7 @@ import kotlinx.coroutines.Dispatchers
 		QuantityEntity::class,
 		SettingsEntity::class,
 	],
-	version = 6
+	version = 7
 )
 @ConstructedBy(AppDatabaseConstructor::class)
 @TypeConverters(Converters::class)

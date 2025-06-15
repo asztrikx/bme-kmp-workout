@@ -16,4 +16,6 @@
     <string name="addCategory">Add category</string>
     <string name="stats">Stats</string>
     <string name="startOfRange">Start of range</string>
+    <string name="leftHandedModeSection">Left handed mode</string>
+    <string name="leftHandedModeToggle">Turn left handed mode on</string>
 </resources>

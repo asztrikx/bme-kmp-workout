@@ -12,10 +12,15 @@ import androidx.compose.material3.Scaffold
 import androidx.compose.material3.ScaffoldDefaults
 import androidx.compose.material3.contentColorFor
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.collectAsState
+import androidx.compose.runtime.getValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.unit.dp
+import hu.asztrikx.workout.presentation.ui.settings.SettingsState
+import hu.asztrikx.workout.presentation.ui.settings.SettingsViewModel
+import org.koin.compose.viewmodel.koinViewModel
 
 @Composable
 fun BetterScaffold(
@@ -27,8 +32,11 @@ fun BetterScaffold(
 	containerColor: Color = MaterialTheme.colorScheme.background,
 	contentColor: Color = contentColorFor(containerColor),
 	contentWindowInsets: WindowInsets = ScaffoldDefaults.contentWindowInsets,
+	settingsViewModel: SettingsViewModel = koinViewModel(),
 	content: @Composable () -> Unit
 ) {
+	val settingsState by settingsViewModel.state.collectAsState()
+
 	Scaffold(
 		modifier,
 		topBar,
@@ -49,12 +57,24 @@ fun BetterScaffold(
 			) {
 				content()
 			}
-			Box(
-				Modifier
-					.align(Alignment.CenterEnd)
-					.padding(end = 16.dp)
-			) {
-				floatingActionButton()
+
+			when (settingsState) {
+				is SettingsState.Result -> {
+					val modifier = if ((settingsState as SettingsState.Result).settings.leftHanded) {
+						Modifier
+							.align(Alignment.CenterStart)
+							.padding(start = 16.dp)
+					} else {
+						Modifier
+							.align(Alignment.CenterEnd)
+							.padding(end = 16.dp)
+					}
+
+					Box(modifier) {
+						floatingActionButton()
+					}
+				}
+				else -> {}
 			}
 		}
 	}

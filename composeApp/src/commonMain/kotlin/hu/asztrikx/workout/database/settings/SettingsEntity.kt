@@ -12,6 +12,7 @@ import kotlinx.datetime.LocalDate
 data class SettingsEntity(
 	@PrimaryKey(autoGenerate = true)
 	val id: Long = 0,
+	val leftHanded: Boolean,
 	val startDate: LocalDate,
 )
 

@@ -37,6 +37,9 @@ class SettingsViewModel(private val service: SettingsService): ViewModel() {
 			is SettingsEvent.DateChange -> {
 				service.update(settings.copy(startDate = event.startDate).asModel())
 			}
+			is SettingsEvent.LeftHandedChange -> {
+				service.update(settings.copy(leftHanded = event.leftHanded).asModel())
+			}
 		}
 	}
 

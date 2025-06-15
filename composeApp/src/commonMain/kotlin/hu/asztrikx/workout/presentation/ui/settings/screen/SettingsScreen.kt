@@ -17,6 +17,7 @@ import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
 import androidx.compose.material3.MaterialTheme
+import androidx.compose.material3.Switch
 import androidx.compose.material3.Text
 import androidx.compose.material3.TopAppBar
 import androidx.compose.runtime.Composable
@@ -46,6 +47,8 @@ import workout.composeapp.generated.resources.categoriesOfWorkout
 import workout.composeapp.generated.resources.createNew
 import workout.composeapp.generated.resources.export
 import workout.composeapp.generated.resources.exportData
+import workout.composeapp.generated.resources.leftHandedModeSection
+import workout.composeapp.generated.resources.leftHandedModeToggle
 import workout.composeapp.generated.resources.settings
 import workout.composeapp.generated.resources.startOfPlotRange
 
@@ -79,6 +82,17 @@ fun SettingsScreen(
 						{ viewModel.onEvent(SettingsEvent.DateChange(it)) },
 						{}
 					)
+
+					Spacer(Modifier.height(30.dp))
+
+					Text(stringResource(Res.string.leftHandedModeSection), style = MaterialTheme.typography.labelMedium)
+					Row(Modifier.fillMaxWidth().padding(20.dp, 0.dp), horizontalArrangement = Arrangement.SpaceEvenly) {
+						Text(stringResource(Res.string.leftHandedModeToggle), Modifier.align(Alignment.CenterVertically))
+						Switch(
+							checked = state.settings.leftHanded,
+							onCheckedChange = { viewModel.onEvent(SettingsEvent.LeftHandedChange(it)) }
+						)
+					}
 
 					Spacer(Modifier.height(30.dp))
 

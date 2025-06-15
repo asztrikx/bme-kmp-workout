@@ -35,8 +35,9 @@ class SettingsService(
 		if (getWithCategories().first() == null) {
 			insert(
 				Settings(
-					currentDate(),
-					listOf(),
+					startDate = currentDate(),
+					leftHanded = false,
+					categories = listOf(),
 				)
 			)
 		}

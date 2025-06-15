@@ -14,15 +14,26 @@ import androidx.compose.material3.Icon
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.collectAsState
+import androidx.compose.runtime.getValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 import hu.asztrikx.workout.presentation.mapper.CategoryUI
+import hu.asztrikx.workout.presentation.ui.settings.SettingsState
+import hu.asztrikx.workout.presentation.ui.settings.SettingsViewModel
 import hu.asztrikx.workout.presentation.ui.shared.format
 import hu.asztrikx.workout.service.stats.QuantityWithDate
+import org.koin.compose.viewmodel.koinViewModel
 
 @Composable
-fun StatsItem(category: CategoryUI, quantityWithDates: List<QuantityWithDate>) {
+fun StatsItem(
+	category: CategoryUI,
+	quantityWithDates: List<QuantityWithDate>,
+	settingsViewModel: SettingsViewModel = koinViewModel(),
+) {
+	val settingsState by settingsViewModel.state.collectAsState()
+
 	Column {
 		Row(verticalAlignment = Alignment.CenterVertically) {
 			Icon(category.icon, null, modifier = Modifier.size(40.dp))
@@ -31,7 +42,21 @@ fun StatsItem(category: CategoryUI, quantityWithDates: List<QuantityWithDate>) {
 		}
 		Spacer(Modifier.height(10.dp))
 		if (quantityWithDates.size >= 2) {
-			Box(Modifier.padding(0.dp, 0.dp, 20.dp, 0.dp).fillMaxWidth(), contentAlignment = Alignment.Center) {
+
+			val modifier = when (settingsState) {
+				is SettingsState.Result -> {
+					if((settingsState as SettingsState.Result).settings.leftHanded) {
+						Modifier.padding(20.dp, 0.dp, 0.dp, 0.dp)
+					} else {
+						Modifier.padding(0.dp, 0.dp, 20.dp, 0.dp)
+					}
+				}
+				else -> {
+					Modifier
+				}
+			}
+
+			Box(modifier.fillMaxWidth(), contentAlignment = Alignment.Center) {
 				Box(Modifier.widthIn(max = 400.dp)) {
 					Chart(category, quantityWithDates)
 				}
