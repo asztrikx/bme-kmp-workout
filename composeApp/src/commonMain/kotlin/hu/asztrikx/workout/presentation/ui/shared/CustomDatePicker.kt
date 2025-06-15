@@ -55,16 +55,24 @@ fun LocalDate.format(): String {
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun CustomDatePicker(
-	date: LocalDate?,
+	date: LocalDate,
 	onDateSelected: (LocalDate) -> Unit,
 	label: @Composable (() -> Unit),
 ) {
 	val datePickerState = rememberDatePickerState()
+	var dateText by remember { mutableStateOf(date.format()) }
 	var dismiss by remember { mutableStateOf(true) }
+	var isError = try {
+		onDateSelected(LocalDate.parse(dateText.replace(".", "-")))
+		false
+	} catch (_: IllegalArgumentException) {
+		true
+	}
 
 	OutlinedTextField(
-		value = date?.format().orEmpty(),
-		onValueChange = {},
+		value = dateText.format(),
+		onValueChange = { dateText = it },
+		isError = isError,
 		label = label,
 		trailingIcon = {
 			IconButton({ dismiss = false }) {
@@ -84,6 +92,7 @@ fun CustomDatePicker(
 			confirmButton = {
 				TextButton(onClick = {
 					datePickerState.selectedDateMillis?.let {
+						dateText = convertMillisToDate(it).toString()
 						onDateSelected(convertMillisToDate(it))
 					}
 					onDismiss()
